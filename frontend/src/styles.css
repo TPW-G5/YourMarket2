@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+@import "static/css/style.css";
+@import "static/css/creditly.css";
+@import "static/css/easy-responsive-tabs.css";
+@import "static/css/flexslider.css";
+@import "static/css/bootstrap.css";
+@import "static/css/font-awesome.css";
+
