@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from api import views
 
+from rest_framework.authtoken import views as token_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -37,10 +39,13 @@ urlpatterns = [
                 # path('items/')
             ])),
 
+            path('signup', views.SignUpView.as_view()),
+            path('login', token_views.ObtainAuthToken.as_view()),
+
             # Registered endpoints
             path('address/', include([
-                path('', views.ProductsView.as_view()),
-                path('<int:pk>', views.ProductView.as_view())
+                path('', views.AddressesView.as_view()),
+                path('<int:pk>', views.AddressView.as_view())
             ])),
         ]))
     ]))
