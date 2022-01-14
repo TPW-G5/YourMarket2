@@ -5,16 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './client/footer/footer.component';
 import { NavBarComponent } from './client/nav-bar/nav-bar.component';
+import { SideBarComponent } from './client/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    NavBarComponent
+    NavBarComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
