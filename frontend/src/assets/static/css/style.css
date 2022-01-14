@@ -6,6 +6,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 html, body{
     font-size: 100%;
+	width: 100%;
+	min-height: 100%;
 	font-family: 'Open Sans', sans-serif;
 	background:#ffffff;
 }
@@ -1061,7 +1063,7 @@ button.submit.check_out{
 /*-- //newsletter --*/
 /*-- footer --*/
 .footer{
-	padding:4em 0;
+	padding:2em 0;
 	background:#212121;
 }
 .w3_footer_grid h3{
@@ -3766,8 +3768,12 @@ input.checkbox:checked:after {
 	.more {
 		margin-left: 29.5em;
 	}
-	.footer {
-		padding: 3em 0;
+	footer {
+		clear: both;
+		position: relative;
+		height: 200px;
+		margin-top: -200px;
+		line-height: normal;
 	}
 	.wthree_footer_copy {
 		margin: 3em 0 0;
