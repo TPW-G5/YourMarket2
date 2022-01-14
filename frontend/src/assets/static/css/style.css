@@ -29,6 +29,14 @@ body a:hover{
 	text-decoration:none;
 }
 /*-- header --*/
+.dropdown-menu {
+	min-width: 60px !important;
+}
+
+#login_char {
+	color: white;
+}
+
 .fixed{
 	position: fixed;
 	top: 0;
