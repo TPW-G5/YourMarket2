@@ -1,5 +1,8 @@
-from rest_framework import generics, views
+from rest_framework import generics
 from api import serializers, models
+
+from rest_framework import status
+from rest_framework.response import Response
 
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -31,7 +34,20 @@ class ProductView(generics.RetrieveUpdateDestroyAPIView):
 
 class OrdersView(generics.ListCreateAPIView):
   queryset = models.Order.objects.all()
-  serializer_class = serializers.OrderSerializer
+  serializer_classes = {'GET': serializers.OrderSerializer, 'POST': serializers.CreateOrderSerializer}
+
+  def get_serializer_class(self):
+    return self.serializer_classes.get(self.request.method)
+
+  def create(self, request, *args, **kwargs):
+      serializer = self.get_serializer(data=request.data)
+      serializer.is_valid(raise_exception=True)
+      order = serializer.create(request.data)
+
+      serialized = serializers.OrderSerializer(order)
+      
+      headers = self.get_success_headers(serializer.data)
+      return Response(serialized.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class OrderView(generics.RetrieveUpdateDestroyAPIView):

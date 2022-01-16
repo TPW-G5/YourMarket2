@@ -62,23 +62,23 @@ class Order(models.Model):
         return OrderItem.objects.filter(order=self)
 
     def __str__(self):
-        return "Order [ user =  " + self.user + "; paymentId = " + self.paymentId + " ]"
+        return "Order [ user =  " + str(self.user) + "; paymentId = " + self.paymentId + " ]"
 
 
 class OrderStateUpdate(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='states')
     orderState = models.ForeignKey(OrderState, default=1, on_delete=models.CASCADE)
     datetime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return "OrderStateUpdate [ order =  " + self.order + "; orderState = " + self.orderState + "; datetime = " + self.datetime + " ]"
+        return "OrderStateUpdate [ order =  " + str(self.order) + "; orderState = " + str(self.orderState) + "; datetime = " + str(self.datetime) + " ]"
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     price = models.DecimalField(decimal_places=2, max_digits=10)
     amount = models.PositiveIntegerField()
     
     def __str__(self):
-        return "Order [ order =  " + self.order + "; product = " + self.product + "; price = " + self.price + "; amount = " + self.amount + " ]"
+        return "OrderItem [ order =  " + str(self.order) + "; product = " + str(self.product) + "; price = " + str(self.price) + "; amount = " + str(self.amount) + " ]"
