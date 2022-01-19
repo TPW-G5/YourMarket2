@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContentComponent } from './client/content/content.component';
+import { AppComponent } from './client/app/app.component';
 import { NavbarComponent } from './staff/navbar/navbar.component';
 
 const routes: Routes = [
-  {path: '', component: ContentComponent},
+  {
+    path: '', component: AppComponent,
+    children: [
+    ],
+  },
   {path: 'system/login', component: NavbarComponent}
 ];
 
