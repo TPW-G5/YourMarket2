@@ -9,6 +9,8 @@ import { SideBarComponent } from './client/side-bar/side-bar.component';
 import { NavBarComponent } from './client/nav-bar/nav-bar.component';
 import { NavbarComponent } from './staff/navbar/navbar.component';
 import { ContentComponent } from './client/content/content.component';
+import { AppStaffComponent } from './staff/app-staff/app-staff.component';
+import { StaffSideComponent } from './staff/staff-side/staff-side.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ContentComponent } from './client/content/content.component';
     NavbarComponent,
     ContentComponent,
     AppClient,
-    NavBarComponent
+    NavBarComponent,
+    AppStaffComponent,
+    StaffSideComponent,
   ],
   imports: [
     BrowserModule,

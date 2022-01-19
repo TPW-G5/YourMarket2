@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './client/app/app.component';
-import { NavbarComponent } from './staff/navbar/navbar.component';
+import { AppStaffComponent } from './staff/app-staff/app-staff.component';
 
 const routes: Routes = [
   {
@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
     ],
   },
-  {path: 'system/login', component: NavbarComponent}
+  {path: 'system/login', component: AppStaffComponent}
 ];
 
 @NgModule({
