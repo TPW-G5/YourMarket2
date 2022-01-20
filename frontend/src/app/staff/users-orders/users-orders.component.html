@@ -1,1 +1,56 @@
-<p>users-orders works!</p>
+<div class="fit-content">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-header" style="text-align: center;">
+                User's Orders
+            </h1>
+        </div>
+    </div>
+    <!-- /. ROW  -->
+
+    <br>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="color: black;" scope="col">Id</th>
+                    <th style="color: black;" scope="col">State</th>
+                    <th style="color: black;" scope="col">Date</th>
+                    <th style="color: black;" scope="col">Amount</th>
+                    <th style="color: black;" scope="col"></th>
+                    <th style="color: black;" scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--{% for order in orders %}-->
+                <tr>
+                    <th style="color: rgb(32, 29, 29);" scope="row"> order.id </th>
+                    <td style="color: rgb(32, 29, 29);"> order.state </td>
+                    <td style="color: rgb(32, 29, 29);"> order.date </td>
+                    <td style="color: rgb(32, 29, 29);"> order.amount </td>
+                    <!--Path from url-->
+                    <td><a href="/">Ver Detalhes</a></td>
+                    <td>
+                        <form action="/" method="post" class="form-horizontal">
+                            <!--{% csrf_token %}-->
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Change State" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </form>
+                        <form action="/" method="post" class="form-horizontal">
+                            <!--{% csrf_token %}-->
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" name="cancel" value="Cancel" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                <!--{% endfor %}-->
+            </tbody>
+        </table>
+    </div>
+</div>
