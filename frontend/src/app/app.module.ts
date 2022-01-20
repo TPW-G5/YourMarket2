@@ -12,6 +12,7 @@ import { ContentComponent } from './client/content/content.component';
 import { AppStaffComponent } from './staff/app-staff/app-staff.component';
 import { StaffSideComponent } from './staff/staff-side/staff-side.component';
 import { DashboardComponent } from './staff/dashboard/dashboard.component';
+import { ProductsComponent } from './staff/products/products.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DashboardComponent } from './staff/dashboard/dashboard.component';
     AppStaffComponent,
     StaffSideComponent,
     DashboardComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
