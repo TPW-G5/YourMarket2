@@ -9,7 +9,6 @@ import { SideBarComponent } from './client/side-bar/side-bar.component';
 import { ProductsComponent as ProductsClient } from './client/products/products.component';
 import { NavBarComponent } from './client/nav-bar/nav-bar.component';
 import { NavbarComponent } from './staff/navbar/navbar.component';
-import { ContentComponent } from './client/content/content.component';
 import { AppStaffComponent } from './staff/app-staff/app-staff.component';
 import { StaffSideComponent } from './staff/staff-side/staff-side.component';
 import { DashboardComponent } from './staff/dashboard/dashboard.component';
@@ -25,7 +24,6 @@ import { StaffAccountsComponent } from './staff/staff-accounts/staff-accounts.co
     FooterComponent,
     SideBarComponent,
     NavbarComponent,
-    ContentComponent,
     AppClient,
     NavBarComponent,
     AppStaffComponent,
