@@ -13,6 +13,10 @@ import { AppStaffComponent } from './staff/app-staff/app-staff.component';
 import { StaffSideComponent } from './staff/staff-side/staff-side.component';
 import { DashboardComponent } from './staff/dashboard/dashboard.component';
 import { ProductsComponent } from './staff/products/products.component';
+import { CategoriesComponent } from './staff/categories/categories.component';
+import { UsersOrdersComponent } from './staff/users-orders/users-orders.component';
+import { UsersAccountsComponent } from './staff/users-accounts/users-accounts.component';
+import { StaffAccountsComponent } from './staff/staff-accounts/staff-accounts.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,10 @@ import { ProductsComponent } from './staff/products/products.component';
     StaffSideComponent,
     DashboardComponent,
     ProductsComponent,
+    CategoriesComponent,
+    UsersOrdersComponent,
+    UsersAccountsComponent,
+    StaffAccountsComponent,
   ],
   imports: [
     BrowserModule,
