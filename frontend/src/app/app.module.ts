@@ -11,6 +11,7 @@ import { NavbarComponent } from './staff/navbar/navbar.component';
 import { ContentComponent } from './client/content/content.component';
 import { AppStaffComponent } from './staff/app-staff/app-staff.component';
 import { StaffSideComponent } from './staff/staff-side/staff-side.component';
+import { DashboardComponent } from './staff/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { StaffSideComponent } from './staff/staff-side/staff-side.component';
     NavBarComponent,
     AppStaffComponent,
     StaffSideComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
