@@ -1953,7 +1953,6 @@ h2.typoh2{
     padding: 2em;
     font-size: 14px;
     line-height: 2em;
-    color: #999;
 }
 a.pa_italic label {
     cursor: pointer;
@@ -4834,4 +4833,14 @@ input.checkbox:checked:after {
 		background: url(../images/cart.png) no-repeat 105px 5px;
 		font-size: 13px;
 	}
+}
+
+/*  
+FIT IN CONTENT WITH ANGULAR
+*/
+
+.fit-content {
+	margin: auto;
+	margin-left: 20%;
+	width: 75%;
 }

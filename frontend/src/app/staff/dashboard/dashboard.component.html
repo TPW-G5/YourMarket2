@@ -1,0 +1,97 @@
+<div class="fit-content">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-header" style="text-align: center;">
+                Dashboard <small>Summary of your App</small>
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <div class="panel panel-primary text-center no-boder bg-color-blue">
+                <div class="panel-left pull-left green" style="margin-left: 35%;">
+                    <i class="fa fa-eye fa-5x"></i>
+                </div>
+
+                <div class="panel-right">
+                    <h3 style="margin-left: 20%;"> staff_count </h3>
+                    <strong style="margin-left: 40%;"> Staff Count</strong>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <div class="panel panel-primary text-center no-boder bg-color-blue">
+                <div class="panel-left pull-left blue" style="margin-left: 35%;">
+                    <i class="fa fa-shopping-cart fa-5x"></i>
+                </div>
+
+                <div class="panel-right">
+                    <h3 style="margin-left: 20%;">user_count </h3>
+                    <strong style="margin-left: 40%;"> User Count</strong>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <div class="panel panel-primary text-center no-boder bg-color-red">
+                <div class="panel-left pull-left red" style="margin-left: 35%;">
+                    <i class="fa fa fa-comments fa-5x"></i>
+
+                </div>
+                <div class="panel-right">
+                    <h3 style="margin-left: 14%;">order_count </h3>
+                    <strong style="margin-left: 35%;"> Order Count </strong>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12">
+            <div class="panel panel-primary text-center no-boder bg-color-brown">
+                <div class="panel-left pull-left brown" style="margin-left: 35%;">
+                    <i class="fa fa-users fa-5x"></i>
+
+                </div>
+                <div class="panel-right">
+                    <h3 > product_count </h3>
+                    <strong style="margin-left: 30%;">Product Count</strong>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--/.row-->
+    <div class="col-md-10 col-sm-12 col-xs-12" style="margin-left: 8%;">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Most Sold Products
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th style="color: black;">Name</th>
+                                <th style="color: black;">Category</th>
+                                <th style="color: black;">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- {% for product in most_sold_products %} -->
+                            <tr>
+                                <td style="color: rgb(32, 29, 29);">product.name</td>
+                                <td style="color: rgb(32, 29, 29);">product.category</td>
+                                <td style="color: rgb(32, 29, 29);">product.price</td>
+                            </tr>
+                            <!-- {% endfor %} -->
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
