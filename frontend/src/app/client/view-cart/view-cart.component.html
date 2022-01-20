@@ -1,0 +1,51 @@
+<div class="w3l_banner_nav_right">
+	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_veg">
+		<h3 class="w3l_fruit" style="margin-left: -5%;">Your Cart</h3>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Product</th>
+					<th>Amount</th>
+					<th>Unitary Price</th>
+					<th>Total Price</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<!--{% for product in products %}-->
+					<tr>
+						<td><a href="/"> product.name </a></td>
+						<td>
+							<form method="post">
+								<!--{% csrf_token %}-->
+								<input type="hidden" name="product" value=" product.id ">
+								<input type="number" name="amount" value=" product.amount ">
+								<input type="submit" value="Update">
+							</form>
+						</td>
+						<td> product.price  €</td>
+						<td> product.total  €</td>
+						<td>
+							<form method="post">
+								<!--{% csrf_token %}-->
+								<input type="hidden" name="product" value=" product.id ">
+								<input type="hidden" name="amount" value="0">
+								<input type="submit" value="Delete">
+							</form>
+						</td>
+					</tr>
+				<!--{% endfor %}-->
+			</tbody>
+		</table>
+
+		<div style="display: block; margin-left: 45%;">
+			<form action="/checkout/" method="post">
+				<!--{% csrf_token %}-->
+				<input type="submit" value="Checkout">
+			</form>
+		</div>
+
+	</div>
+</div>

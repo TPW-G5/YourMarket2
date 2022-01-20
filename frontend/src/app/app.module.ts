@@ -17,6 +17,8 @@ import { CategoriesComponent } from './staff/categories/categories.component';
 import { UsersOrdersComponent } from './staff/users-orders/users-orders.component';
 import { UsersAccountsComponent } from './staff/users-accounts/users-accounts.component';
 import { StaffAccountsComponent } from './staff/staff-accounts/staff-accounts.component';
+import { SingleComponent } from './client/single/single.component';
+import { ViewCartComponent } from './client/view-cart/view-cart.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { StaffAccountsComponent } from './staff/staff-accounts/staff-accounts.co
     UsersOrdersComponent,
     UsersAccountsComponent,
     StaffAccountsComponent,
-    ProductsClient
+    ProductsClient,
+    SingleComponent,
+    ViewCartComponent
   ],
   imports: [
     BrowserModule,

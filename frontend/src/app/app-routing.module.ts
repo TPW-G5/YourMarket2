@@ -5,15 +5,20 @@ import { AppStaffComponent } from './staff/app-staff/app-staff.component';
 import { CategoriesComponent } from './staff/categories/categories.component';
 import { DashboardComponent } from './staff/dashboard/dashboard.component';
 import { ProductsComponent } from './staff/products/products.component';
+import { ProductsComponent as ProdutsClient } from './client/products/products.component';
 import { StaffAccountsComponent } from './staff/staff-accounts/staff-accounts.component';
 import { UsersAccountsComponent } from './staff/users-accounts/users-accounts.component';
 import { UsersOrdersComponent } from './staff/users-orders/users-orders.component';
+import { SingleComponent } from './client/single/single.component';
+import { ViewCartComponent } from './client/view-cart/view-cart.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '',component: AppComponent,
     children: [
-      {path: '', component: AppComponent},
+      {path: '', component: ProdutsClient},
+      {path: 'single' , component: SingleComponent},
+      {path: 'cart' , component: ViewCartComponent},
     ],  
   },
   {
