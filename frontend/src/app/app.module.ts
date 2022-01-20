@@ -19,6 +19,8 @@ import { UsersOrdersComponent } from './staff/users-orders/users-orders.componen
 import { UsersAccountsComponent } from './staff/users-accounts/users-accounts.component';
 import { StaffAccountsComponent } from './staff/staff-accounts/staff-accounts.component';
 
+import { HttpClientModule } from '@angular/common/http'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +43,7 @@ import { StaffAccountsComponent } from './staff/staff-accounts/staff-accounts.co
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

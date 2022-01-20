@@ -21,12 +21,12 @@
         </thead>
         <tbody>
             <!-- {% for product in products %} -->
-            <tr>
-                <th style="color: rgb(32, 29, 29);" scope="row"> product.id </th>
+            <tr *ngFor="let product of products">
+                <th style="color: rgb(32, 29, 29);" scope="row">{{ product.id }}</th>
                 <td style="color: rgb(32, 29, 29);"> product.category</td>
-                <td style="color: rgb(32, 29, 29);"> product.name </    td>
-                <td style="color: rgb(32, 29, 29);"> product.price </td>
-                <td style="color: rgb(32, 29, 29);"> product.active </td>
+                <td style="color: rgb(32, 29, 29);">{{ product.name }}</td>
+                <td style="color: rgb(32, 29, 29);">{{ product.price }}</td>
+                <td style="color: rgb(32, 29, 29);">{{ product.isActive }}</td>
                 <td style="color: rgb(32, 29, 29);">
                     <a href="products"><button class="btn btn-info btn-sm">Ver</button></a>
                     <!-- {% if product.active == "Yes" %}-->
