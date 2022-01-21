@@ -1,26 +1,24 @@
 <div class="agileinfo_single fit-client" style="margin-top: -3%;">
-    <h5> product.name </h5>
+    <h5>{{ details.name }}</h5>
     <div class="col-md-4 agileinfo_single_left" style="float: left;">
-        <img id="example" src="../../../assets/static/images/1.jpg" alt=" " class="img-responsive" />
+        <img id="example" src="../../../assets/static/images/{{ details.id }}.jpg" alt=" " class="img-responsive" />
     </div>
     <div class="col-md-8 agileinfo_single_right" style="float: right;">
         <div class="w3agile_description">
             <h4>Category :</h4>
-            <p> product.category </p>
+            <p>{{ details.category.name }}</p>
         </div>
         <div class="w3agile_description">
             <h4>Description :</h4>
-            <p> product.description </p>
+            <p>{{ details.description }}</p>
         </div>
         <div class="snipcart-item block">
             <div class="snipcart-thumb agileinfo_single_right_snipcart">
-                <h4> product.price €</h4>
+                <h4>{{ details.price }} €</h4>
             </div>
             <div class="snipcart-details agileinfo_single_right_details">
                 <form>
-                    <!--{% csrf_token %}-->
                     <fieldset>
-                        <input type="hidden" name="product" value=" product.id " />
                         <input type="number" name="amount" value="1" />
                         <input style="margin-top: 10px;" type="button" name="submit" onclick="addProductEvent(event)" value="Add to cart"
                             class="button" />

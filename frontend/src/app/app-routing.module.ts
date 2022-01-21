@@ -17,7 +17,9 @@ const routes: Routes = [
     path: '',component: AppComponent,
     children: [
       {path: '', component: ProdutsClient},
-      {path: 'single' , component: SingleComponent},
+      {path: 'product', children: [
+        {path: ':id', component: SingleComponent}
+      ]},
       {path: 'cart' , component: ViewCartComponent},
     ],  
   },

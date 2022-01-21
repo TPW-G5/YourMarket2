@@ -27,4 +27,8 @@ export class ProductService {
   getAll() {
     return this.http.get<Product[]>(environment.baseAPIPath + '/product')
   }
+
+  getOne(id: number) {
+    return this.http.get<Product>(environment.baseAPIPath + '/product/' + id)
+  }
 }
