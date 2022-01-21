@@ -1,4 +1,5 @@
-from rest_framework import generics
+from django.http import HttpRequest, HttpResponse
+from rest_framework import generics, views
 from api import serializers, models
 
 from rest_framework import status
@@ -32,25 +33,27 @@ class ProductView(generics.RetrieveUpdateDestroyAPIView):
   serializer_class = serializers.ProductSerializer
 
 
-class OrdersView(generics.ListCreateAPIView):
+class OrdersView(AuthBaseView, generics.ListCreateAPIView):
   queryset = models.Order.objects.all()
   serializer_classes = {'GET': serializers.OrderSerializer, 'POST': serializers.CreateOrderSerializer}
 
   def get_serializer_class(self):
     return self.serializer_classes.get(self.request.method)
 
+  def list(self, request, *args, **kwargs):
+      serialized = serializers.OrderSerializer(models.Order.objects.filter(user=request.user).all(), many=True)
+      return Response(serialized.data)
+
   def create(self, request, *args, **kwargs):
       serializer = self.get_serializer(data=request.data)
-      serializer.is_valid(raise_exception=True)
-      order = serializer.create(request.data)
+      order = serializer.create({ 'user': request.user })
 
       serialized = serializers.OrderSerializer(order)
       
-      headers = self.get_success_headers(serializer.data)
-      return Response(serialized.data, status=status.HTTP_201_CREATED, headers=headers)
+      return Response(serialized.data, status=status.HTTP_201_CREATED)
 
 
-class OrderView(generics.RetrieveUpdateDestroyAPIView):
+class OrderView(AuthBaseView, generics.RetrieveUpdateDestroyAPIView):
   queryset = models.Order.objects.all()
   serializer_class = serializers.OrderSerializer
 
@@ -60,7 +63,7 @@ class AddressesView(AuthBaseView, generics.ListCreateAPIView):
   serializer_class = serializers.AddressSerializer
 
 
-class AddressView(generics.RetrieveUpdateDestroyAPIView, AuthBaseView):
+class AddressView(AuthBaseView, generics.RetrieveUpdateDestroyAPIView):
   queryset = models.Address.objects.all()
   serializer_class = serializers.AddressSerializer
 
@@ -68,3 +71,26 @@ class AddressView(generics.RetrieveUpdateDestroyAPIView, AuthBaseView):
 class SignUpView(generics.ListCreateAPIView):
   queryset = models.User.objects.all()
   serializer_class = serializers.UserSerializer
+
+class CartView(AuthBaseView, views.APIView):
+  def get(self, request, format=None):
+    user = request.user
+    items = models.CartItem.objects.filter(user=user).all()
+    return Response(serializers.CartItemSerializer(items, many=True).data)
+
+  def post(self, request: HttpRequest, format=None):
+    user = request.user
+    product = models.Product.objects.get(id=request.data['product'])
+
+    if request.data['amount'] <= 0:
+      models.CartItem.objects.filter(user=user, product=product).delete()
+      return Response()
+    
+    try:
+      item = models.CartItem.objects.get(user=user, product=product)
+      item.amount = request.data['amount']
+      item.save()
+    except models.CartItem.DoesNotExist:
+      item = models.CartItem.objects.create(user = user, product = product, amount = request.data['amount'])
+    
+    return Response(serializers.CartItemSerializer(item).data)

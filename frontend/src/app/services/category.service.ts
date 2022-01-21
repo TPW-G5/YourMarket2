@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Category } from './../classes/category';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from './../../environments/environment';
+import { Category } from './../interfaces/Category';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -19,5 +20,10 @@ export class CategoryService {
   getCategory(id: number): Observable<Category> {
     const url = this.baseUrl + '/' + id;
     return this.http.get<Category>(url);
+  }
+
+
+  getAll() {
+    return this.http.get<Category[]>(environment.baseAPIPath + '/category')
   }
 }

@@ -8,6 +8,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+  category = CategorySerializer()
   class Meta:
     model = models.Product
     fields = '__all__'
@@ -19,27 +20,41 @@ class OrderStateSerializer(serializers.ModelSerializer):
     fields = '__all__'
 
 class OrderStateUpdateSerializer(serializers.ModelSerializer):
+  state = serializers.SerializerMethodField()
   class Meta:
     model = models.OrderStateUpdate
-    fields = '__all__'
+    fields = ('datetime', 'state')
 
-class CreateOrderItemSerializer(serializers.Serializer):
+  def get_state(self, instance: models.OrderStateUpdate):
+    return OrderStateSerializer(instance.orderState).data
+
+class CartItemSerializer(serializers.ModelSerializer):
+  product = serializers.SerializerMethodField()
+  class Meta:
+    model = models.CartItem
+    fields = ('product', 'amount')
+
+  def get_product(self, instance: models.CartItem):
+    return ProductSerializer(instance.product).data
+
+class CreateCartItemSerializer(serializers.Serializer):
   product = serializers.IntegerField()
   amount = serializers.IntegerField()
 
 
 class CreateOrderSerializer(serializers.ModelSerializer):
-  items = CreateOrderItemSerializer(many=True)
 
   class Meta:
     model = models.Order
     fields = '__all__'
 
   def create(self, validated_data):
-      order = models.Order.objects.create(user_id=validated_data['user'])
-      for item in validated_data['items']:
-        product = models.Product.objects.get(pk=item['product'])
-        print(models.OrderItem.objects.create(order=order, product_id=product.id, price=product.price, amount=1))
+      order = models.Order.objects.create(user=validated_data['user'])
+
+      items = models.CartItem.objects.filter(user=validated_data['user'])
+      for item in items.all():
+        models.OrderItem.objects.create(order=order, product_id=item.product.id, price=item.product.price, amount=item.amount)
+      items.delete()
 
       models.OrderStateUpdate.objects.create(order=order)
       
@@ -47,9 +62,10 @@ class CreateOrderSerializer(serializers.ModelSerializer):
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
+  product = ProductSerializer()
   class Meta:
     model = models.OrderItem
-    fields = '__all__'
+    fields = ('product', 'amount', 'price')
   
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -58,7 +74,7 @@ class OrderSerializer(serializers.ModelSerializer):
   items = OrderItemSerializer(many=True)
   class Meta:
     model = models.Order
-    fields = '__all__'
+    fields = ('id', 'states', 'items', 'price')
 
   def get_price(self, obj: models.Order):
     return obj.get_total()

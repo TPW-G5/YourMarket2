@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Product } from './../classes/product';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from './../../environments/environment';
+import { Product } from './../interfaces/Product';
+
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -21,4 +23,8 @@ export class ProductService {
     return this.http.get<Product[]>(url);
   }
 
+
+  getAll() {
+    return this.http.get<Product[]>(environment.baseAPIPath + '/product')
+  }
 }

@@ -1,3 +1,5 @@
+import { AuthInterceptor } from './auth-interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,7 +11,6 @@ import { SideBarComponent } from './client/side-bar/side-bar.component';
 import { ProductsComponent as ProductsClient } from './client/products/products.component';
 import { NavBarComponent } from './client/nav-bar/nav-bar.component';
 import { NavbarComponent } from './staff/navbar/navbar.component';
-import { ContentComponent } from './client/content/content.component';
 import { AppStaffComponent } from './staff/app-staff/app-staff.component';
 import { StaffSideComponent } from './staff/staff-side/staff-side.component';
 import { DashboardComponent } from './staff/dashboard/dashboard.component';
@@ -18,6 +19,9 @@ import { CategoriesComponent } from './staff/categories/categories.component';
 import { UsersOrdersComponent } from './staff/users-orders/users-orders.component';
 import { UsersAccountsComponent } from './staff/users-accounts/users-accounts.component';
 import { StaffAccountsComponent } from './staff/staff-accounts/staff-accounts.component';
+import { SingleComponent } from './client/single/single.component';
+import { ViewCartComponent } from './client/view-cart/view-cart.component';
+import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http'
 
@@ -27,7 +31,6 @@ import { HttpClientModule } from '@angular/common/http'
     FooterComponent,
     SideBarComponent,
     NavbarComponent,
-    ContentComponent,
     AppClient,
     NavBarComponent,
     AppStaffComponent,
@@ -38,14 +41,17 @@ import { HttpClientModule } from '@angular/common/http'
     UsersOrdersComponent,
     UsersAccountsComponent,
     StaffAccountsComponent,
-    ProductsClient
+    ProductsClient,
+    SingleComponent,
+    ViewCartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

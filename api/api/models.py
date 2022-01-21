@@ -50,7 +50,6 @@ class OrderState(models.Model):
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    paymentId = models.CharField(max_length=50,editable=False)
 
     def get_total(self):
         return sum(list(map(lambda item: item.price*item.amount, OrderItem.objects.filter(order=self))))

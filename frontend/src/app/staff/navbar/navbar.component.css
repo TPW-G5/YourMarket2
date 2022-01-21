@@ -1,0 +1,5 @@
+#nav {
+    -moz-box-shadow:    3px 0 5px 0 #555;
+    -webkit-box-shadow: 3px 0 5px 0 #555;
+    box-shadow:         3px 0 5px 0 #555;
+}
