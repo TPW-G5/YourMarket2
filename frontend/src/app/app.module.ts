@@ -22,6 +22,7 @@ import { StaffAccountsComponent } from './staff/staff-accounts/staff-accounts.co
 import { SingleComponent } from './client/single/single.component';
 import { ViewCartComponent } from './client/view-cart/view-cart.component';
 import { FormsModule } from '@angular/forms';
+import { OrdersCliComponent } from './client/orders-cli/orders-cli.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FormsModule } from '@angular/forms';
     StaffAccountsComponent,
     ProductsClient,
     SingleComponent,
-    ViewCartComponent
+    ViewCartComponent,
+    OrdersCliComponent
   ],
   imports: [
     BrowserModule,
