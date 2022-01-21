@@ -33,23 +33,16 @@
                     <form action= "." method="post" class="form-horizontal" style="margin-left: -5rem;">
                         <!--{% csrf_token %}-->
                         <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
+                            <div *ngIf="product.isActive" class="col-md-offset-2 col-md-10">
                                 <input type="hidden" name="isActive" value=""/>
                                 <input type="submit" value="Desativar" class="btn btn-default"/>
                             </div>
-                        </div>
-                    </form>
-                    <!--{% else %}-->
-                    <form action= "." method="post" class="form-horizontal" style="margin-left: -5rem;">
-                        <!--{% csrf_token %}-->
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
+                            <div *ngIf="!product.isActive" class="col-md-offset-2 col-md-10">
                                 <input type="hidden" name="isActive" value="1"/>
                                 <input type="submit" value="Ativar" class="btn btn-default"/>
                             </div>
                         </div>
                     </form>
-                    <!--{% endif %}-->
                 </td>
             </tr>
             <!--{% endfor %}-->
