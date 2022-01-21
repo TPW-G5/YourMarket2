@@ -1,0 +1,60 @@
+<div class="w3l_banner_nav_right">
+    <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_veg">
+        <h3 class="w3l_fruit" style="margin-right: 10%;">Your Cart</h3>
+        <h4 style="text-align: center; margin-right: 10%;">Request number: order.id </h4>
+        <br>
+        <table class="table" style="width: 90%;">
+            <thead>
+                <caption>States</caption>
+                <tr>
+                    <th>State</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!--{% for state in order_states %}-->
+                <tr>
+                    <td> state.name </td>
+                    <td> state.date </td>
+                    <!--Path from url-->
+                </tr>
+                <!--{% endfor %}-->
+            </tbody>
+        </table>
+
+
+        <table class="table" style="width: 90%;">
+            <thead>
+                <caption style="display: block;">Deliver Information</caption>
+                <tr>
+                    <th>Identifier</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!--{% for item in order_items %}-->
+                <tr>
+                    <td> item.id </td>
+                    <td><a href="/"> item.name </a></td>
+                    <td> item.amount </td>
+                    <td> item.price </td>
+                    <td> item.total </td>
+                    <!--Path from url-->
+                </tr>
+                <!--{% endfor %}-->
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td> order.total </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

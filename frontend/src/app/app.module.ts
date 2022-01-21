@@ -23,6 +23,7 @@ import { SingleComponent } from './client/single/single.component';
 import { ViewCartComponent } from './client/view-cart/view-cart.component';
 import { FormsModule } from '@angular/forms';
 import { OrdersCliComponent } from './client/orders-cli/orders-cli.component';
+import { OrderDetailsComponent } from './client/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { OrdersCliComponent } from './client/orders-cli/orders-cli.component';
     ProductsClient,
     SingleComponent,
     ViewCartComponent,
-    OrdersCliComponent
+    OrdersCliComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ import { UsersOrdersComponent } from './staff/users-orders/users-orders.componen
 import { SingleComponent } from './client/single/single.component';
 import { ViewCartComponent } from './client/view-cart/view-cart.component';
 import { OrdersCliComponent } from './client/orders-cli/orders-cli.component';
+import { OrderDetailsComponent } from './client/order-details/order-details.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,9 @@ const routes: Routes = [
         {path: ':id', component: SingleComponent}
       ]},
       {path: 'cart' , component: ViewCartComponent},
-      {path: 'orders', component: OrdersCliComponent}
+      {path: 'orders', component: OrdersCliComponent},
+      {path: 'orderdetail', component: OrderDetailsComponent}   
+      
     ],  
   },
   {
