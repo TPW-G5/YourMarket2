@@ -26,7 +26,8 @@
                 <td style="color: rgb(32, 29, 29);">{{ product.category.name }}</td>
                 <td style="color: rgb(32, 29, 29);">{{ product.name }}</td>
                 <td style="color: rgb(32, 29, 29);">{{ product.price }}</td>
-                <td style="color: rgb(32, 29, 29);">{{ product.isActive }}</td>
+                <td *ngIf="product.isActive" style="color: rgb(32, 29, 29);">Yes</td>
+                <td *ngIf="!product.isActive" style="color: rgb(32, 29, 29);">No</td>
                 <td style="color: rgb(32, 29, 29);">
                     <a href="products"><button class="btn btn-info btn-sm">Ver</button></a>
                     <!-- {% if product.active == "Yes" %}-->

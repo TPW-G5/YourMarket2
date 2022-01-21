@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class CategoryService {
 
-  private baseUrl = 'http://localhost:8000/api/v1/category/';
+  private baseUrl = environment.baseAPIPath + '/category';
 
   constructor(private http: HttpClient) { }
 

@@ -16,13 +16,11 @@
             </tr>
         </thead>
         <tbody>
-            <!--{% for category in categories %}-->
-            <tr>
-                <th style="color: rgb(32, 29, 29);" scope="row"> category.id </th>
-                <td style="color: rgb(32, 29, 29);"> category.name </td>
+            <tr *ngFor="let category of categories">
+                <th style="color: rgb(32, 29, 29);" scope="row">{{ category.id }}</th>
+                <td style="color: rgb(32, 29, 29);">{{ category.name }}</td>
 
             </tr>
-            <!--{% endfor %}-->
         </tbody>
     </table>
 </div>
