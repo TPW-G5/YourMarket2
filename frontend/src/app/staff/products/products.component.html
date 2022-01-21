@@ -23,7 +23,7 @@
             <!-- {% for product in products %} -->
             <tr *ngFor="let product of products">
                 <th style="color: rgb(32, 29, 29);" scope="row">{{ product.id }}</th>
-                <td style="color: rgb(32, 29, 29);"> product.category</td>
+                <td style="color: rgb(32, 29, 29);">{{ product.category }}</td>
                 <td style="color: rgb(32, 29, 29);">{{ product.name }}</td>
                 <td style="color: rgb(32, 29, 29);">{{ product.price }}</td>
                 <td style="color: rgb(32, 29, 29);">{{ product.isActive }}</td>

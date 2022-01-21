@@ -1,5 +1,3 @@
-import { Category } from './category';
-
 export class Product {
   id: number;
   name: string;
@@ -7,9 +5,9 @@ export class Product {
   description: string;
   price: number;
   isActive: boolean;
-  category: Category;
+  category: number;
 
-  constructor(num:number, name:string, email:string, description: string, price: number, isActive: boolean, category: Category) {
+  constructor(num:number, name:string, email:string, description: string, price: number, isActive: boolean, category: number) {
     this.id = num;
     this.name = name;
     this.email = email;
@@ -17,6 +15,10 @@ export class Product {
     this.price = price;
     this.isActive = isActive;
     this.category = category;
+  }
+
+  show(){
+    return "Product: Name = " + this.name + ", category = " + this.category;
   }
 
 }

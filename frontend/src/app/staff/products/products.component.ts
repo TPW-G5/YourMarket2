@@ -1,5 +1,5 @@
-import { ProductService } from './../../product.service';
-import { Product } from './../../product';
+import { ProductService } from './../../services/product.service';
+import { Product } from '../../classes/product';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  products: Product[] | undefined;
+  products: Product[] = [];
 
   constructor(private productService:ProductService) { }
 
@@ -19,6 +19,10 @@ export class ProductsComponent implements OnInit {
 
   getProducts(): void {
     this.productService.getProducts().subscribe(products => this.products = products);
+    console.log("Produtos: ");
+    for (let a of this.products) {
+      console.log(a.show());
+    }
   }
 
 }
