@@ -16,8 +16,7 @@
 				<div class="snipcart-details">
 					<form>
 						<fieldset>
-							<input type="hidden" name="product" value=" product.id " />
-							<input type="number" name="amount" value="1" />
+							<input type="number" name="amount" value="1" id="amount-{{ product.id }}" />
 							<input style="margin-top: 10px;" type="button" name="submit" value="Add to cart"
 								class="button" (click)="addToCart(product.id)"/>
 						</fieldset>

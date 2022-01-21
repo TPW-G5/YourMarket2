@@ -14,26 +14,18 @@
 			</thead>
 
 			<tbody>
-				<!--{% for product in products %}-->
-					<tr>
-						<td><a href="/"> product.name </a></td>
+					<tr *ngFor="let item of items">
+						<td><a href="/">{{ item.product.name }}</a></td>
 						<td>
 							<form method="post">
-								<!--{% csrf_token %}-->
-								<input type="hidden" name="product" value=" product.id ">
-								<input type="number" name="amount" value=" product.amount ">
-								<input type="submit" value="Update">
+								<input type="number" name="amount" value="{{ item.amount }}" id="amount-{{ item.product.id }}">
+								<input type="submit" value="Update" (click)="updateItem(item.product.id)">
 							</form>
 						</td>
-						<td> product.price  €</td>
-						<td> product.total  €</td>
+						<td>{{ item.product.price }} €</td>
+						<td>{{ item.product.price * item.amount | number : '.2' }}  €</td>
 						<td>
-							<form method="post">
-								<!--{% csrf_token %}-->
-								<input type="hidden" name="product" value=" product.id ">
-								<input type="hidden" name="amount" value="0">
-								<input type="submit" value="Delete">
-							</form>
+							<input type="submit" value="Delete" (click)="deleteItem(item.product.id)">
 						</td>
 					</tr>
 				<!--{% endfor %}-->

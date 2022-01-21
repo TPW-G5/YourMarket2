@@ -81,6 +81,10 @@ class CartView(AuthBaseView, views.APIView):
   def post(self, request: HttpRequest, format=None):
     user = request.user
     product = models.Product.objects.get(id=request.data['product'])
+
+    if request.data['amount'] <= 0:
+      models.CartItem.objects.filter(user=user, product=product).delete()
+      return Response()
     
     try:
       item = models.CartItem.objects.get(user=user, product=product)
