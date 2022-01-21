@@ -1,0 +1,30 @@
+<div class="w3l_banner_nav_right">
+    <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_veg">
+        <h3 class="w3l_fruit">Your Cart</h3>
+
+        <table class="table" style="width: 90%;">
+            <thead>
+                <tr>
+                    <th>Identifier</th>
+                    <th>State</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!--{% for order in orders %}-->
+                <tr>
+                    <td> order.id </td>
+                    <td> order.state </td>
+                    <td> order.date </td>
+                    <td> order.amount </td>
+                    <!--Path from url-->
+                    <td><a href="/">Ver Detalhes</a></td>
+                </tr>
+                <!--{% endfor %}-->
+            </tbody>
+        </table>
+    </div>
+</div>

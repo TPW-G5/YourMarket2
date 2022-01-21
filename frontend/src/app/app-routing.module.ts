@@ -11,6 +11,7 @@ import { UsersAccountsComponent } from './staff/users-accounts/users-accounts.co
 import { UsersOrdersComponent } from './staff/users-orders/users-orders.component';
 import { SingleComponent } from './client/single/single.component';
 import { ViewCartComponent } from './client/view-cart/view-cart.component';
+import { OrdersCliComponent } from './client/orders-cli/orders-cli.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
         {path: ':id', component: SingleComponent}
       ]},
       {path: 'cart' , component: ViewCartComponent},
+      {path: 'orders', component: OrdersCliComponent}
     ],  
   },
   {
