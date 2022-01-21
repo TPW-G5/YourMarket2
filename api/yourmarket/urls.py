@@ -33,20 +33,20 @@ urlpatterns = [
                 path('', views.ProductsView.as_view()),
                 path('<int:pk>', views.ProductView.as_view())
             ])),
-            path('order/', include([
-                path('', views.OrdersView.as_view()),
-                path('<int:pk>', views.OrderView.as_view()),
-                # path('items/')
-            ])),
 
             path('signup', views.SignUpView.as_view()),
             path('login', token_views.ObtainAuthToken.as_view()),
 
             # Registered endpoints
+            path('order/', include([
+                path('', views.OrdersView.as_view()),
+                path('<int:pk>', views.OrderView.as_view()),
+            ])),
             path('address/', include([
                 path('', views.AddressesView.as_view()),
                 path('<int:pk>', views.AddressView.as_view())
             ])),
+            path('cart/', views.CartView.as_view()),
         ]))
     ]))
 ]

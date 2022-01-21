@@ -23,13 +23,21 @@ class OrderStateUpdateSerializer(serializers.ModelSerializer):
     model = models.OrderStateUpdate
     fields = '__all__'
 
-class CreateOrderItemSerializer(serializers.Serializer):
+class CartItemSerializer(serializers.ModelSerializer):
+  product = serializers.SerializerMethodField()
+  class Meta:
+    model = models.CartItem
+    fields = ('product', 'amount')
+
+  def get_product(self, instance: models.CartItem):
+    return ProductSerializer(instance.product).data
+
+class CreateCartItemSerializer(serializers.Serializer):
   product = serializers.IntegerField()
   amount = serializers.IntegerField()
 
 
 class CreateOrderSerializer(serializers.ModelSerializer):
-  items = CreateOrderItemSerializer(many=True)
 
   class Meta:
     model = models.Order
@@ -37,9 +45,11 @@ class CreateOrderSerializer(serializers.ModelSerializer):
 
   def create(self, validated_data):
       order = models.Order.objects.create(user_id=validated_data['user'])
-      for item in validated_data['items']:
-        product = models.Product.objects.get(pk=item['product'])
-        print(models.OrderItem.objects.create(order=order, product_id=product.id, price=product.price, amount=1))
+
+      items = models.CartItem.objects.filter(user_id=validated_data['user'])
+      for item in items.all():
+        models.OrderItem.objects.create(order=order, product_id=item.product.id, price=item.product.price, amount=item.amount)
+      items.delete()
 
       models.OrderStateUpdate.objects.create(order=order)
       

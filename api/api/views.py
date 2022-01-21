@@ -1,4 +1,5 @@
-from rest_framework import generics
+from django.http import HttpRequest, HttpResponse
+from rest_framework import generics, views
 from api import serializers, models
 
 from rest_framework import status
@@ -68,3 +69,15 @@ class AddressView(generics.RetrieveUpdateDestroyAPIView, AuthBaseView):
 class SignUpView(generics.ListCreateAPIView):
   queryset = models.User.objects.all()
   serializer_class = serializers.UserSerializer
+
+class CartView(AuthBaseView, views.APIView):
+  def get(self, request, format=None):
+    user = request.user
+    items = models.CartItem.objects.filter(user=user).all()
+    return Response(serializers.CartItemSerializer(items, many=True).data)
+
+  def post(self, request: HttpRequest, format=None):
+    user = request.user
+    product = models.Product.objects.get(id=request.data['product'])
+    item = models.CartItem.objects.create(user = user, product = product, amount = request.data['amount'])
+    return Response(serializers.CartItemSerializer(item).data)

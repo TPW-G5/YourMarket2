@@ -1,88 +1,20 @@
 <div class="fit-client">
 	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_veg">
 		<h3 style="margin-left: -60px;" class="w3l_fruit">Hot Offers</h3>
-		<!--{% include "client/product_item.html" %}-->
 	</div>
 
 	<div style="margin-bottom: 5%;">
-		<a routerLink="single">
-			<div class="card" style="width: 25rem; height:470px; margin-bottom: 5%;">
+		<a routerLink="single" *ngFor="let product of products">
+			<div class="card col-3" style="height:470px; margin-bottom: 5%;">
 				<div class="cover-image">
-					<img src="../../../assets/static/images/1.jpg" class="card-img-top" style="margin-left: 10%">
+					<img src="/assets/static/images/{{ product.id }}.jpg" class="card-img-top" style="margin-left: 10%">
 				</div>
 				<div class="card-body" style="text-align: center;">
-					<h5 class="card-title">Shampoo</h5>
-					<p class="card-text">5€</p>
+					<h5 class="card-title">{{ product.name }}</h5>
+					<p class="card-text">{{ product.price }}€</p>
 				</div>
 				<div class="snipcart-details">
 					<form>
-						<!--{% csrf_token %}-->
-						<fieldset>
-							<input type="hidden" name="product" value=" product.id " />
-							<input type="number" name="amount" value="1" />
-							<input style="margin-top: 10px;" type="button" name="submit" value="Add to cart"
-								class="button" />
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</a>
-		<a href="/">
-			<div class="card" style="width: 25rem; height:470px; margin-bottom: 5%;">
-				<div class="cover-image">
-					<img src="../../../assets/static/images/1.jpg" class="card-img-top" style="margin-left: 10%">
-				</div>
-				<div class="card-body" style="text-align: center;">
-					<h5 class="card-title">Shampoo</h5>
-					<p class="card-text">5€</p>
-				</div>
-				<div class="snipcart-details">
-					<form>
-						<!--{% csrf_token %}-->
-						<fieldset>
-							<input type="hidden" name="product" value=" product.id " />
-							<input type="number" name="amount" value="1" />
-							<input style="margin-top: 10px;" type="button" name="submit" value="Add to cart"
-								class="button" />
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</a>
-		<a href="/">
-			<div class="card" style="width: 25rem; height:470px; margin-bottom: 5%;">
-				<div class="cover-image">
-					<img src="../../../assets/static/images/1.jpg" class="card-img-top" style="margin-left: 10%">
-				</div>
-				<div class="card-body" style="text-align: center;">
-					<h5 class="card-title">Shampoo</h5>
-					<p class="card-text">5€</p>
-				</div>
-				<div class="snipcart-details">
-					<form>
-						<!--{% csrf_token %}-->
-						<fieldset>
-							<input type="hidden" name="product" value=" product.id " />
-							<input type="number" name="amount" value="1" />
-							<input style="margin-top: 10px;" type="button" name="submit" value="Add to cart"
-								class="button" />
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</a>
-		<a href="/">
-			<div class="card" style="width: 25rem; height:470px; margin-bottom: 5%;">
-				<div class="cover-image">
-					<img src="../../../assets/static/images/1.jpg" class="card-img-top" style="margin-left: 10%">
-				</div>
-				<div class="card-body" style="text-align: center;">
-					<h5 class="card-title">Shampoo</h5>
-					<p class="card-text">5€</p>
-				</div>
-				<div class="snipcart-details">
-					<form>
-						<!--{% csrf_token %}-->
 						<fieldset>
 							<input type="hidden" name="product" value=" product.id " />
 							<input type="number" name="amount" value="1" />

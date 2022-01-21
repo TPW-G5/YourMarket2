@@ -21,8 +21,10 @@
           <i class="fa fa-user" aria-hidden="true" id="login_char"></i><span class="caret"></span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Login</a>
-          <a class="dropdown-item" href="#">Sign Up</a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#loginModal" *ngIf="authService.token.value == null">Login</a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#signupModal" *ngIf="authService.token.value == null">Sign Up</a>
+
+          <a class="dropdown-item" (click)="authService.logout()" *ngIf="authService.token.value != null">Log Out</a>
         </div>
       </li>
     </ul>

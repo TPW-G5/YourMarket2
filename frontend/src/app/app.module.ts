@@ -1,3 +1,5 @@
+import { AuthInterceptor } from './auth-interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -19,6 +21,7 @@ import { UsersAccountsComponent } from './staff/users-accounts/users-accounts.co
 import { StaffAccountsComponent } from './staff/staff-accounts/staff-accounts.component';
 import { SingleComponent } from './client/single/single.component';
 import { ViewCartComponent } from './client/view-cart/view-cart.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,8 +46,10 @@ import { ViewCartComponent } from './client/view-cart/view-cart.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
