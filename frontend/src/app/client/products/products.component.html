@@ -4,7 +4,7 @@
 	</div>
 
 	<div style="margin-bottom: 5%;">
-		<a routerLink="single" *ngFor="let product of products">
+		<a *ngFor="let product of products">
 			<div class="card col-3" style="height:470px; margin-bottom: 5%;">
 				<div class="cover-image">
 					<img src="/assets/static/images/{{ product.id }}.jpg" class="card-img-top" style="margin-left: 10%">
@@ -19,7 +19,7 @@
 							<input type="hidden" name="product" value=" product.id " />
 							<input type="number" name="amount" value="1" />
 							<input style="margin-top: 10px;" type="button" name="submit" value="Add to cart"
-								class="button" />
+								class="button" (click)="addToCart(product.id)"/>
 						</fieldset>
 					</form>
 				</div>
