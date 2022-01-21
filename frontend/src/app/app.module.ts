@@ -23,8 +23,6 @@ import { SingleComponent } from './client/single/single.component';
 import { ViewCartComponent } from './client/view-cart/view-cart.component';
 import { FormsModule } from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http'
-
 @NgModule({
   declarations: [
     AppComponent,
