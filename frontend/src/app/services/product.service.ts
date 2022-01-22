@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Product } from './../interfaces/Product';
+import { Category } from '../interfaces/Category';
 
 
 const httpOptions = {
@@ -31,7 +32,11 @@ export class ProductService {
     return this.http.get<Product>(environment.baseAPIPath + '/product/' + id)
   }
 
-  createProduct(product: Product): Observable<any>{
-    return this.http.post(this.baseUrl, product, httpOptions);
+  createProduct(category:Category, name: string, description: string, price: number) {
+    console.log(category)
+    console.log(name)
+    console.log(description)
+    console.log(price)
+    this.http.post<Product>(this.baseUrl, {  "category": { "name": category.name, "isActive": category.isActive}, "name": name, "description": description, "price": price,"isActive": false}, httpOptions).subscribe(response => console.log(response))
   }
 }
