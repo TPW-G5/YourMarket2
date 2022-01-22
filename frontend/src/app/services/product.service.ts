@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class ProductService {
 
-  private baseUrl = 'http://localhost:8000/api/v1/product/';
+  private baseUrl = environment.baseAPIPath + '/product';
 
   constructor(private http: HttpClient) { }
 
@@ -23,12 +23,15 @@ export class ProductService {
     return this.http.get<Product[]>(url);
   }
 
-
   getAll() {
     return this.http.get<Product[]>(environment.baseAPIPath + '/product')
   }
 
   getOne(id: number) {
     return this.http.get<Product>(environment.baseAPIPath + '/product/' + id)
+  }
+
+  createProduct(product: Product): Observable<any>{
+    return this.http.post(this.baseUrl, product, httpOptions);
   }
 }

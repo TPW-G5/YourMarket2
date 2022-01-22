@@ -13,6 +13,8 @@ import { SingleComponent } from './client/single/single.component';
 import { ViewCartComponent } from './client/view-cart/view-cart.component';
 import { OrdersCliComponent } from './client/orders-cli/orders-cli.component';
 import { OrderDetailsComponent } from './client/order-details/order-details.component';
+import { NewCategoryComponent } from './staff/new-category/new-category.component';
+import { NewProductComponent } from './staff/new-product/new-product.component';
 
 const routes: Routes = [
   {
@@ -24,9 +26,9 @@ const routes: Routes = [
       ]},
       {path: 'cart' , component: ViewCartComponent},
       {path: 'orders', component: OrdersCliComponent},
-      {path: 'orderdetail', component: OrderDetailsComponent}   
-      
-    ],  
+      {path: 'orderdetail', component: OrderDetailsComponent}
+
+    ],
   },
   {
     path: 'system', component: AppStaffComponent,
@@ -37,6 +39,8 @@ const routes: Routes = [
       {path: 'usersorders' , component: UsersOrdersComponent},
       {path: 'usersaccounts' , component: UsersAccountsComponent},
       {path: 'staffaccounts' , component: StaffAccountsComponent},
+      {path: 'newcategory' , component: NewCategoryComponent},
+      {path: 'newproduct' , component: NewProductComponent},
     ]
   }
 ];
