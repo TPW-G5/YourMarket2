@@ -26,4 +26,9 @@ export class CategoryService {
   getAll() {
     return this.http.get<Category[]>(environment.baseAPIPath + '/category')
   }
+
+
+  createCategory(name: string) {
+    this.http.post<Category>(this.baseUrl, { "name":name, "isActive": false }, httpOptions).subscribe(response => console.log(response))
+  }
 }

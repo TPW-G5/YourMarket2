@@ -1,3 +1,4 @@
+import { CategoryService } from './../../services/category.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-category.component.css']
 })
 export class NewCategoryComponent implements OnInit {
+  category: {name: string} = {name: ""}
 
-  constructor() { }
+  constructor(private categoryService:CategoryService) { }
 
   ngOnInit(): void {
+  }
+
+  createCategory():void{
+    if (this.category.name != "") {
+      this.categoryService.createCategory(this.category.name);
+    }
   }
 
 }
