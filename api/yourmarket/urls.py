@@ -36,6 +36,7 @@ urlpatterns = [
 
             path('signup', views.SignUpView.as_view()),
             path('login', token_views.ObtainAuthToken.as_view()),
+            path('profile', views.ProfileView.as_view()),
 
             # Registered endpoints
             path('order/', include([
@@ -47,6 +48,15 @@ urlpatterns = [
                 path('<int:pk>', views.AddressView.as_view())
             ])),
             path('cart/', views.CartView.as_view()),
+
+            # Staff Stuff
+            path('users/', include([
+                path('', views.UsersView.as_view()),
+                path('<int:pk>', views.UserView.as_view())
+            ])),
+            path('staff/', include([
+                path('', views.StaffView.as_view())
+            ])),
         ]))
     ]))
 ]

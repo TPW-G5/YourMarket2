@@ -1,17 +1,32 @@
 from django.http import HttpRequest, HttpResponse
-from rest_framework import generics, views
+from rest_framework import generics, views, mixins
 from api import serializers, models
 
 from rest_framework import status
 from rest_framework.response import Response
 
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, BasePermission
+
 
 # Create your views here.
+
+
+class IsSuperUser(BasePermission):
+    def has_permission(self, request, view):
+        return bool(request.user and request.user.is_superuser)
+
 class AuthBaseView:
   authentication_classes = (TokenAuthentication,)
-  permission_classes = (IsAuthenticated,)  
+  permission_classes = (IsAuthenticated,)
+
+class StaffAuthBaseView:
+  authentication_classes = (TokenAuthentication,)
+  permission_classes = (IsAdminUser,)
+
+class AdminAuthBaseView:
+  authentication_classes = (TokenAuthentication,)
+  permission_classes = (IsSuperUser,)
 
 class CategoriesView(generics.ListCreateAPIView):
   queryset = models.Category.objects.all()
@@ -68,9 +83,15 @@ class AddressView(AuthBaseView, generics.RetrieveUpdateDestroyAPIView):
   serializer_class = serializers.AddressSerializer
 
 
-class SignUpView(generics.ListCreateAPIView):
-  queryset = models.User.objects.all()
+class SignUpView(generics.CreateAPIView):
+  queryset = models.User.objects.filter(is_staff=False).all()
   serializer_class = serializers.UserSerializer
+
+
+class ProfileView(AuthBaseView, views.APIView):
+  def get(self, request, format=None):
+    return Response(serializers.UserSerializer(request.user).data)
+
 
 class CartView(AuthBaseView, views.APIView):
   def get(self, request, format=None):
@@ -94,3 +115,26 @@ class CartView(AuthBaseView, views.APIView):
       item = models.CartItem.objects.create(user = user, product = product, amount = request.data['amount'])
     
     return Response(serializers.CartItemSerializer(item).data)
+
+
+class StaffView(AdminAuthBaseView, generics.ListAPIView):
+  queryset = models.User.objects.filter(is_staff=True, is_superuser=False).all()
+  serializer_class = serializers.UserSerializer
+
+  def post(self, request: HttpRequest, format=None):
+    data = {k:v for k, v in request.data.items()}
+
+    user = models.User.objects.create(**data)
+    user.set_password(data['password'])
+    user.is_active = True
+    user.is_staff = True
+    user.save()
+    return Response(self.serializer_class(user).data)
+
+class UsersView(StaffAuthBaseView, generics.ListAPIView):
+  queryset = models.User.objects.filter(is_staff=False).all()
+  serializer_class = serializers.UserSerializer
+
+class UserView(StaffAuthBaseView, generics.RetrieveUpdateDestroyAPIView):
+  queryset = models.User.objects.filter(is_staff=False).all()
+  serializer_class = serializers.UserSerializer
