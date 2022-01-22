@@ -24,6 +24,8 @@ import { ViewCartComponent } from './client/view-cart/view-cart.component';
 import { FormsModule } from '@angular/forms';
 import { OrdersCliComponent } from './client/orders-cli/orders-cli.component';
 import { OrderDetailsComponent } from './client/order-details/order-details.component';
+import { NewCategoryComponent } from './staff/new-category/new-category.component';
+import { NewProductComponent } from './staff/new-product/new-product.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { OrderDetailsComponent } from './client/order-details/order-details.comp
     SingleComponent,
     ViewCartComponent,
     OrdersCliComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    NewCategoryComponent,
+    NewProductComponent
   ],
   imports: [
     BrowserModule,
