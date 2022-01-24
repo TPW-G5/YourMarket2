@@ -40,7 +40,10 @@ class CategoryView(generics.RetrieveUpdateDestroyAPIView):
 
 class ProductsView(generics.ListCreateAPIView):
   queryset = models.Product.objects.all()
-  serializer_class = serializers.ProductSerializer
+  serializer_classes = {'GET': serializers.ProductSerializer, 'POST': serializers.CreateProductSerializer}
+
+  def get_serializer_class(self):
+    return self.serializer_classes.get(self.request.method)
 
 
 class ProductView(generics.RetrieveUpdateDestroyAPIView):
