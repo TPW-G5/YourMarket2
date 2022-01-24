@@ -33,10 +33,6 @@ export class ProductService {
   }
 
   createProduct(category:number, name: string, description: string, price: number) {
-    console.log(category)
-    console.log(name)
-    console.log(description)
-    console.log(price)
     this.http.post<Product>(this.baseUrl + "/", {  "category": category, "name": name, "description": description, "price": price,"isActive": true}, httpOptions).subscribe(response => console.log(response))
   }
 }
