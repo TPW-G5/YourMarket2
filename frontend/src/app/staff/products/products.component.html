@@ -31,16 +31,14 @@
                 <td style="color: rgb(32, 29, 29);">
                     <a href="products"><button class="btn btn-info btn-sm">Ver</button></a>
                     <!-- {% if product.active == "Yes" %}-->
-                    <form action= "." method="post" class="form-horizontal" style="margin-left: -5rem;">
+                    <form class="form-horizontal" style="margin-left: -5rem;">
                         <!--{% csrf_token %}-->
                         <div class="form-group">
                             <div *ngIf="product.isActive" class="col-md-offset-2 col-md-10">
-                                <input type="hidden" name="isActive" value=""/>
-                                <input type="submit" value="Desativar" class="btn btn-default"/>
+                                <button type="button" class="btn btn-default" (click)="desactiveProduct(product.id)">Desativar</button>
                             </div>
                             <div *ngIf="!product.isActive" class="col-md-offset-2 col-md-10">
-                                <input type="hidden" name="isActive" value="1"/>
-                                <input type="submit" value="Ativar" class="btn btn-default"/>
+                                <button type="button" class="btn btn-default" (click)="activeProduct(product.id)">Ativar</button>
                             </div>
                         </div>
                     </form>
