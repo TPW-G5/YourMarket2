@@ -41,22 +41,24 @@ class CategoryView(generics.RetrieveUpdateDestroyAPIView):
 class ProductsView(generics.ListCreateAPIView):
   queryset = models.Product.objects.all()
   serializer_classes = {'GET': serializers.ProductSerializer, 'POST': serializers.CreateProductSerializer}
+
+  def get_serializer_class(self):
+    return self.serializer_classes.get(self.request.method)
   
+  '''
   def put(self, request: HttpRequest, format=None):
 
       id = request.data['id']
       try:
-          product = Product.objects.get(id=id)
-      except Product.DoesNotExist:
+          product = models.Product.objects.get(id=id)
+      except models.Product.DoesNotExist:
           return Response(status=status.HTTP_404_NOT_FOUND)
-      serializer = ProductSerializer(product, data=request.data)
+      serializer = serializers.ProductSerializer(product, data=request.data)
       if serializer.is_valid():
           serializer.save()
           return Response(serializer.data)
       return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-  def get_serializer_class(self):
-    return self.serializer_classes.get(self.request.method)
+  '''
 
 
 class ProductView(generics.RetrieveUpdateDestroyAPIView):
