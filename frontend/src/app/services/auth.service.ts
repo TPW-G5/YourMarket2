@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserService } from './user.service';
 import { LoginResponse } from './../interfaces/responses/LoginResponse';
 import { User } from './../interfaces/User';
@@ -10,7 +11,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private userService: UserService) {
+  constructor(private http: HttpClient, private userService: UserService, private router: Router) {
     this.userService.setToken(localStorage.getItem('token'))
     this.loadProfile()
   }
@@ -30,6 +31,7 @@ export class AuthService {
   logout() {
     this.userService.setToken(null)
     localStorage.removeItem('token')
+    this.router.navigateByUrl('/')
   }
 
   loadProfile() {

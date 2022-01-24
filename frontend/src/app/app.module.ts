@@ -26,6 +26,9 @@ import { OrdersCliComponent } from './client/orders-cli/orders-cli.component';
 import { OrderDetailsComponent } from './client/order-details/order-details.component';
 import { NewCategoryComponent } from './staff/new-category/new-category.component';
 import { NewProductComponent } from './staff/new-product/new-product.component';
+import { ProductComponent } from './components/client/product/product.component';
+import { AddProductComponent } from './components/client/addproduct/addproduct.component';
+import { IndexComponent } from './client/index/index.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { NewProductComponent } from './staff/new-product/new-product.component';
     OrdersCliComponent,
     OrderDetailsComponent,
     NewCategoryComponent,
-    NewProductComponent
+    NewProductComponent,
+    ProductComponent,
+    AddProductComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
