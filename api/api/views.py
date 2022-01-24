@@ -8,6 +8,9 @@ from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, BasePermission
 
+from api.api.models import Product
+from api.api.serializers import ProductSerializer
+
 
 # Create your views here.
 
@@ -41,6 +44,19 @@ class CategoryView(generics.RetrieveUpdateDestroyAPIView):
 class ProductsView(generics.ListCreateAPIView):
   queryset = models.Product.objects.all()
   serializer_class = serializers.ProductSerializer
+  
+  def put(self, request: HttpRequest, format=None):
+
+      id = request.data['id']
+      try:
+          product = Product.objects.get(id=id)
+      except Product.DoesNotExist:
+          return Response(status=status.HTTP_404_NOT_FOUND)
+      serializer = ProductSerializer(product, data=request.data)
+      if serializer.is_valid():
+          serializer.save()
+          return Response(serializer.data)
+      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ProductView(generics.RetrieveUpdateDestroyAPIView):
