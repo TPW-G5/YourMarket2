@@ -27,9 +27,8 @@ export class NewProductComponent implements OnInit {
   }
 
   createProduct(): void{
-    console.log(this.product)
     if (this.product.name != "" && this.product.description != "" && this.product.price != 0) {
-        this.productService.createProduct(this.categories[this.product.category], this.product.name, this.product.description, this.product.price);
+        this.productService.createProduct(this.product.category + 1, this.product.name, this.product.description, this.product.price);
       }
     }
   }

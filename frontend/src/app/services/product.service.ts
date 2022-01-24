@@ -32,11 +32,13 @@ export class ProductService {
     return this.http.get<Product>(environment.baseAPIPath + '/product/' + id)
   }
 
-  createProduct(category:Category, name: string, description: string, price: number) {
-    console.log(category)
-    console.log(name)
-    console.log(description)
-    console.log(price)
-    this.http.post<Product>(this.baseUrl + "/", {  "category": { "name": category.name, "isActive": category.isActive}, "name": name, "description": description, "price": price,"isActive": true}, httpOptions).subscribe(response => console.log(response))
+  createProduct(category:number, name: string, description: string, price: number) {
+    this.http.post<Product>(this.baseUrl + "/", {  "category": category, "name": name, "description": description, "price": price,"isActive": true}, httpOptions).subscribe(response => console.log(response))
+  }
+
+  updateProduct(product:Product) {
+    console.log(product)
+    console.log(product.category.id )
+    this.http.put<Product>(this.baseUrl + "/"+ product.id, { "id": product.id, "name": product.name, "description": product.description, "price": product.price, "isActive": product.isActive, "category": product.category.id }, httpOptions).subscribe(response => console.log(response))
   }
 }
