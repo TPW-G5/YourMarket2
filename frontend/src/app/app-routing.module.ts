@@ -1,3 +1,4 @@
+import { ShowProductComponent } from './staff/show-product/show-product.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './client/app/app.component';
@@ -42,6 +43,7 @@ const routes: Routes = [
       {path: 'staffaccounts' , component: StaffAccountsComponent},
       {path: 'newcategory' , component: NewCategoryComponent},
       {path: 'newproduct' , component: NewProductComponent},
+      {path: 'showproduct/:id' , component: ShowProductComponent},
     ]
   }
 ];

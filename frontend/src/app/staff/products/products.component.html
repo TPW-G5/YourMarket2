@@ -29,7 +29,7 @@
                 <td *ngIf="product.isActive" style="color: rgb(32, 29, 29);">Yes</td>
                 <td *ngIf="!product.isActive" style="color: rgb(32, 29, 29);">No</td>
                 <td style="color: rgb(32, 29, 29);">
-                    <a href="products"><button class="btn btn-info btn-sm">Ver</button></a>
+                    <a routerLink="/system/showproduct/{{ product.id }}"><button class="btn btn-info btn-sm">Ver</button></a>
                     <!-- {% if product.active == "Yes" %}-->
                     <form class="form-horizontal" style="margin-left: -5rem;">
                         <!--{% csrf_token %}-->
