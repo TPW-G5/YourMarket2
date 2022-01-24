@@ -8,22 +8,18 @@
                     <th>Identifier</th>
                     <th>State</th>
                     <th>Date</th>
-                    <th>Amount</th>
                     <th></th>
                 </tr>
             </thead>
 
             <tbody>
-                <!--{% for order in orders %}-->
-                <tr>
-                    <td> order.id </td>
-                    <td> order.state </td>
-                    <td> order.date </td>
-                    <td> order.amount </td>
-                    <!--Path from url-->
-                    <td><a routerLink="/orderdetail">Ver Detalhes</a></td>
+                <tr *ngFor="let order of orders">
+                    <td> {{ order.id }} </td>
+                    <td> {{ order.states[order.states.length - 1].state.name }} </td>
+                    <td> {{ order.states[order.states.length - 1].datetime }} </td>
+                    
+                    <td><a routerLink="/order/{{ order.id }}">Ver Detalhes</a></td>
                 </tr>
-                <!--{% endfor %}-->
             </tbody>
         </table>
     </div>

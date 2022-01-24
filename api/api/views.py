@@ -43,7 +43,7 @@ class CategoryView(generics.RetrieveUpdateDestroyAPIView):
 
 class ProductsView(generics.ListCreateAPIView):
   queryset = models.Product.objects.all()
-  serializer_class = serializers.ProductSerializer
+  serializer_classes = {'GET': serializers.ProductSerializer, 'POST': serializers.CreateProductSerializer}
   
   def put(self, request: HttpRequest, format=None):
 
@@ -57,6 +57,9 @@ class ProductsView(generics.ListCreateAPIView):
           serializer.save()
           return Response(serializer.data)
       return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+  def get_serializer_class(self):
+    return self.serializer_classes.get(self.request.method)
 
 
 class ProductView(generics.RetrieveUpdateDestroyAPIView):
