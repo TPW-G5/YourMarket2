@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   signup(username: string, password: string) {
-    this.http.post<User>(environment.baseAPIPath + '/signup', { username, password }).subscribe(response => console.log(response))
+    this.http.post<any>(environment.baseAPIPath + '/signup', { username, password })
   }
 
   login(username: string, password: string) {
