@@ -25,9 +25,10 @@ const routes: Routes = [
         {path: ':id', component: SingleComponent}
       ]},
       {path: 'cart' , component: ViewCartComponent},
-      {path: 'orders', component: OrdersCliComponent},
-      {path: 'orderdetail', component: OrderDetailsComponent}
-
+      {path: 'order', children: [
+        {path: '', component: OrdersCliComponent},
+        {path: ':id', component: OrderDetailsComponent}
+      ]},
     ],
   },
   {

@@ -28,15 +28,11 @@
 							<input type="submit" value="Delete" (click)="deleteItem(item.product.id)">
 						</td>
 					</tr>
-				<!--{% endfor %}-->
 			</tbody>
 		</table>
 
 		<div style="display: block; margin-left: 45%;">
-			<form action="/checkout/" method="post">
-				<!--{% csrf_token %}-->
-				<input type="submit" value="Checkout">
-			</form>
+			<input type="submit" value="Checkout" (click)="createOrder()">
 		</div>
 
 	</div>

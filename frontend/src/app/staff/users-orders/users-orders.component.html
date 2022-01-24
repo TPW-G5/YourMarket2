@@ -24,9 +24,9 @@
             <tbody>
                 <tr *ngFor="let order of orders">
                     <th style="color: rgb(32, 29, 29);" scope="row">{{ order.id }}</th>
-                    <td style="color: rgb(32, 29, 29);">{{ order.states.state.name }}</td>
-                    <td style="color: rgb(32, 29, 29);">{{ order.states.datetime }}</td>
-                    <td style="color: rgb(32, 29, 29);">{{ order.items.amount }}</td>
+                    <td style="color: rgb(32, 29, 29);">{{ order.states[-1].state.name }}</td>
+                    <td style="color: rgb(32, 29, 29);">{{ order.states[-1].datetime }}</td>
+                    <td style="color: rgb(32, 29, 29);">{{ order.items[-1].amount }}</td>
                     <!--Path from url-->
                     <td><a href="/">Ver Detalhes</a></td>
                     <td>

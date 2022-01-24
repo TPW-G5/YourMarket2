@@ -14,6 +14,10 @@ export class OrderService {
     return this.http.get<Order[]>(environment.baseAPIPath + '/order/')
   }
 
+  getDetails(id: number) {
+    return this.http.get<Order>(environment.baseAPIPath + '/order/' + id)
+  }
+
   create() {
     return this.http.post<Order>(environment.baseAPIPath + '/order/', {})
   }
