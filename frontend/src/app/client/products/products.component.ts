@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
 
   constructor(private productService: ProductService, private cartService: CartService) { }
 
-  addToCart = (id: number) => this.cartService.add(id, parseInt((<HTMLInputElement>document.getElementById('amount-' + id)).value))
+  addToCart = (id: number) => this.cartService.add(id, parseInt((<HTMLInputElement>document.getElementById('amount-' + id)).value)).subscribe()
 
   ngOnInit(): void {
     this.productService.getAll().subscribe(products => this.products = products)
