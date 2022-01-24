@@ -44,26 +44,26 @@ class ProductsView(generics.ListCreateAPIView):
 
   def get_serializer_class(self):
     return self.serializer_classes.get(self.request.method)
-  
-  '''
-  def put(self, request: HttpRequest, format=None):
-
-      id = request.data['id']
-      try:
-          product = models.Product.objects.get(id=id)
-      except models.Product.DoesNotExist:
-          return Response(status=status.HTTP_404_NOT_FOUND)
-      serializer = serializers.ProductSerializer(product, data=request.data)
-      if serializer.is_valid():
-          serializer.save()
-          return Response(serializer.data)
-      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-  '''
 
 
 class ProductView(generics.RetrieveUpdateDestroyAPIView):
   queryset = models.Product.objects.all()
-  serializer_class = serializers.ProductSerializer
+  serializer_classes = {'PUT': serializers.CreateProductSerializer}
+
+  def get_serializer_class(self):
+    return self.serializer_classes.get(self.request.method, serializers.ProductSerializer)
+  
+  def put(self, request: HttpRequest, format=None, **kwargs):
+      id = kwargs['pk']
+      try:
+          product = models.Product.objects.get(id=id)
+      except models.Product.DoesNotExist:
+          return Response(status=status.HTTP_404_NOT_FOUND)
+      serializer = serializers.CreateProductSerializer(product, data=request.data)
+      if serializer.is_valid():
+          serializer.save()
+          return Response(serializer.data)
+      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class OrdersView(AuthBaseView, generics.ListCreateAPIView):

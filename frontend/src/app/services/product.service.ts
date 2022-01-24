@@ -36,7 +36,9 @@ export class ProductService {
     this.http.post<Product>(this.baseUrl + "/", {  "category": category, "name": name, "description": description, "price": price,"isActive": true}, httpOptions).subscribe(response => console.log(response))
   }
 
-  updateProduct(product:Product): Observable<any>{
-    return this.http.put(this.baseUrl + "/", product, httpOptions);
+  updateProduct(product:Product) {
+    console.log(product)
+    console.log(product.category.id )
+    this.http.put<Product>(this.baseUrl + "/"+ product.id, { "id": product.id, "name": product.name, "description": product.description, "price": product.price, "isActive": product.isActive, "category": product.category.id }, httpOptions).subscribe(response => console.log(response))
   }
 }

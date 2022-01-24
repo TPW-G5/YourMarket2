@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { UserService } from './../../services/user.service';
 import { CartService } from './../../services/cart.service';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -20,9 +22,11 @@ export class AppComponent implements OnInit {
     this.authService.signup(this.signup.username, this.signup.password)
   }
 
-  constructor(private authService: AuthService, private cartService: CartService) { }
+  constructor(private authService: AuthService, private cartService: CartService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    if (this.userService.user?.is_staff) this.router.navigateByUrl('/system/dashboard')
+
     this.cartService.getAll()
   }
 

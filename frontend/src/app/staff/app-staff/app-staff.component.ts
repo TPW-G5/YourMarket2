@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppStaffComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    if (!this.userService.user?.is_staff) this.router.navigateByUrl('/')
   }
 
 }
