@@ -8,9 +8,6 @@ from rest_framework.response import Response
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, BasePermission
 
-from api.api.models import Product
-from api.api.serializers import ProductSerializer
-
 
 # Create your views here.
 
