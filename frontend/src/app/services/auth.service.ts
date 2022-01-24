@@ -1,19 +1,17 @@
+import { UserService } from './user.service';
 import { LoginResponse } from './../interfaces/responses/LoginResponse';
 import { User } from './../interfaces/User';
 import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  token: BehaviorSubject<string | null> = new BehaviorSubject(localStorage.getItem('token'))
-  user: User | null = null
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService: UserService) {
+    this.userService.setToken(localStorage.getItem('token'))
     this.loadProfile()
   }
 
@@ -23,19 +21,19 @@ export class AuthService {
 
   login(username: string, password: string) {
     this.http.post<LoginResponse>(environment.baseAPIPath + '/login', { username, password }).subscribe(response => {
-      this.token.next(response.token)
       localStorage.setItem('token', response.token)
+      this.userService.setToken(response.token)
       this.loadProfile()
     })
   }
 
   logout() {
-    this.token.next(null)
+    this.userService.setToken(null)
     localStorage.removeItem('token')
   }
 
   loadProfile() {
-    if (this.token.value != null) this.http.get<User>(environment.baseAPIPath + '/profile').subscribe(user => this.user = user)
+    if (this.userService.token.value != null) this.http.get<User>(environment.baseAPIPath + '/profile').subscribe(user => this.userService.setUser(user))
   }
 
 }
