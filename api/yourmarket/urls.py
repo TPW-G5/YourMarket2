@@ -42,6 +42,7 @@ urlpatterns = [
             path('order/', include([
                 path('', views.OrdersView.as_view()),
                 path('<int:pk>', views.OrderView.as_view()),
+                path('changestate/<int:pk>', views.StateChangeView.as_view())
             ])),
             path('address/', include([
                 path('', views.AddressesView.as_view()),

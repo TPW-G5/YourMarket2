@@ -41,8 +41,6 @@ export class DashboardComponent implements OnInit {
       this.orders = orders
       this.order_count = this.orders.length
     });
-    //this.products.sort((product1:Product, product2:Product) => product2.price - product1.price)
-    //console.log(this.products)
   }
 
 }

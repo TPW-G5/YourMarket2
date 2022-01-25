@@ -27,15 +27,18 @@
                     <td style="color: rgb(32, 29, 29);">{{ order.states[order.states.length-1].datetime | date: 'short' }}</td>
                     <td><a href="/">Ver Detalhes</a></td>
                     <td>
-                        <form action="/" method="post" class="form-horizontal">
+                      <div *ngIf="order.states[order.states.length-1].state.name != 'Delivered' && order.states[order.states.length-1].state.name != 'Cancelled'">
+                        <form class="form-horizontal">
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Change State" class="btn btn-default" />
+                                    <button type="button" class="btn btn-default" (click)="changeState(order.id)">Change State</button>
                                 </div>
                             </div>
                         </form>
+                      </div>
                     </td>
                     <td>
+                      <div *ngIf="order.states[order.states.length-1].state.name != 'Cancelled' && order.states[order.states.length-1].state.name != 'Delivered'">
                         <form action="/" method="post" class="form-horizontal">
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
@@ -43,6 +46,7 @@
                                 </div>
                             </div>
                         </form>
+                        </div>
                     </td>
                 </tr>
             </tbody>
