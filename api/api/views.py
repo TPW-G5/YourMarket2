@@ -41,6 +41,7 @@ class CategoryView(generics.RetrieveUpdateDestroyAPIView):
 class ProductsView(generics.ListCreateAPIView):
   queryset = models.Product.objects.all()
   serializer_classes = {'GET': serializers.ProductSerializer, 'POST': serializers.CreateProductSerializer}
+  filterset_fields = ('category', )
   search_fields = ('name', )
 
   def get_serializer_class(self):
