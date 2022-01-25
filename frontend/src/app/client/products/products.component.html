@@ -22,7 +22,7 @@
 
         <div class="form-group mt-2 mb-4">
           <p><b>Search</b></p>
-          <input type="text" class="form-control" id="textSearch">
+          <input type="text" class="form-control" id="textSearch" [(ngModel)]="name"/>
         </div>
 
         <div class="form-group mt-2 mb-4">
@@ -38,7 +38,7 @@
             <label class="form-check-label" for="flexCheckDefault"> Default </label>
           </div>
         </div>
-        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark">Apply</button>
+        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" (click)="update_search(name)">Apply</button>
       </div>
     </div>
 

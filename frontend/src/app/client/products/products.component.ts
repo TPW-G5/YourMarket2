@@ -10,11 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent implements OnInit {
 
   products: Product[] = []
-
+  name = ""
+  
   constructor(private productService: ProductService) { }
-
+  
   ngOnInit(): void {
-    this.productService.getAll().subscribe(products => this.products = products)
+    console.log("NOME; " , this.name)
+    this.productService.getAll(this.name).subscribe(products => this.products = products)
   }
 
+  update_search(name: string):void {
+    console.log("NOME update; " , this.name)
+    this.productService.getAll(this.name).subscribe(products => this.products = products)
+  }
 }
