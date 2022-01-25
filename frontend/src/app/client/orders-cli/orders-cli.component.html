@@ -1,26 +1,36 @@
-<div class="w3l_banner_nav_right">
-    <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_veg">
-        <h3 class="w3l_fruit" style="margin-right: 10%;">Your Cart</h3>
+<div class="p-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                Your Orders
+            </h1>
+        </div>
+    </div>
 
-        <table class="table" style="width: 90%;">
-            <thead>
-                <tr>
-                    <th>Identifier</th>
-                    <th>State</th>
-                    <th>Date</th>
-                    <th></th>
-                </tr>
-            </thead>
+    <div class="col-md-12 mt-5">
+        <div>
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Identifier</th>
+                            <th>State</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let order of orders">
+                            <td> {{ order.id }} </td>
+                            <td> {{ order.states[order.states.length - 1].state.name }} </td>
+                            <td> {{ order.states[order.states.length - 1].datetime }} </td>
+                            
+                            <td><a routerLink="/order/{{ order.id }}">Ver Detalhes</a></td>
+                        </tr>
+                    </tbody>
 
-            <tbody>
-                <tr *ngFor="let order of orders">
-                    <td> {{ order.id }} </td>
-                    <td> {{ order.states[order.states.length - 1].state.name }} </td>
-                    <td> {{ order.states[order.states.length - 1].datetime }} </td>
-                    
-                    <td><a routerLink="/order/{{ order.id }}">Ver Detalhes</a></td>
-                </tr>
-            </tbody>
-        </table>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
