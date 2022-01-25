@@ -41,9 +41,18 @@ const routes: Routes = [
     path: 'system', component: AppStaffComponent,
     children: [
       {path: 'dashboard', component: DashboardComponent},
-      {path: 'product', children: [
-        {path: '', component: ProductsComponent},
-        {path: ':id', component: OrderDetailStaffComponent}
+      {path: 'product' , children: [
+        {path:'', component: ProductsComponent},
+        {path:'new', component: NewProductComponent},
+        {path:':id', component: SingleComponent},
+      ]},
+      {path: 'categories' , children: [
+        {path: '', component: CategoriesComponent},
+        {path: 'new' , component: NewCategoryComponent}
+      ]},
+      {path: 'orders' , children: [
+        {path: '', component: UsersOrdersComponent},
+        {path: ':id', component: OrderDetailsComponent},
       ]},
       {path: 'categories' , component: CategoriesComponent},
       {path: 'orders' , component: UsersOrdersComponent},
@@ -51,11 +60,10 @@ const routes: Routes = [
         {path: '' , component: UsersAccountsComponent},
         {path: ':id', component: OrdersByUsersComponent}
       ]},
-      {path: 'staff' , component: StaffAccountsComponent},
-      {path: 'newcategory' , component: NewCategoryComponent},
-      {path: 'newproduct' , component: NewProductComponent},
-      {path: 'showproduct/:id' , component: ShowProductComponent},
-      {path: 'newstaff' , component: NewStaffComponent},
+      {path: 'staff' , children: [
+        {path: '', component: StaffAccountsComponent},
+        {path: 'new' , component: NewStaffComponent},
+      ]},
     ]
   }
 ];
