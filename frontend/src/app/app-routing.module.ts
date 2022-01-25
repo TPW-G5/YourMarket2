@@ -39,15 +39,21 @@ const routes: Routes = [
     path: 'system', component: AppStaffComponent,
     children: [
       {path: 'dashboard', component: DashboardComponent},
-      {path: 'products' , component: ProductsComponent},
-      {path: 'categories' , component: CategoriesComponent},
+      {path: 'product' , children: [
+        {path:'', component: ProductsComponent},
+        {path:'new', component: NewProductComponent},
+        {path:':id', component: SingleComponent},
+      ]},
+      {path: 'categories' , children: [
+        {path: '', component: CategoriesComponent},
+        {path: 'new' , component: NewCategoryComponent}
+      ]},
       {path: 'orders' , component: UsersOrdersComponent},
       {path: 'users' , component: UsersAccountsComponent},
-      {path: 'staff' , component: StaffAccountsComponent},
-      {path: 'newcategory' , component: NewCategoryComponent},
-      {path: 'newproduct' , component: NewProductComponent},
-      {path: 'showproduct/:id' , component: ShowProductComponent},
-      {path: 'newstaff' , component: NewStaffComponent},
+      {path: 'staff' , children: [
+        {path: '', component: StaffAccountsComponent},
+        {path: 'new' , component: NewStaffComponent},
+      ]},
     ]
   }
 ];
