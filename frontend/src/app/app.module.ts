@@ -26,11 +26,11 @@ import { OrdersCliComponent } from './client/orders-cli/orders-cli.component';
 import { OrderDetailsComponent } from './client/order-details/order-details.component';
 import { NewCategoryComponent } from './staff/new-category/new-category.component';
 import { NewProductComponent } from './staff/new-product/new-product.component';
-import { SearchFilterComponent } from './client/search-filter/search-filter.component';
 import { ProductComponent } from './components/client/product/product.component';
 import { AddProductComponent } from './components/client/addproduct/addproduct.component';
 import { IndexComponent } from './client/index/index.component';
 import { ShowProductComponent } from './staff/show-product/show-product.component';
+import { NewStaffComponent } from './staff/new-staff/new-staff.component';
 
 @NgModule({
   declarations: [
@@ -55,11 +55,11 @@ import { ShowProductComponent } from './staff/show-product/show-product.componen
     OrderDetailsComponent,
     NewCategoryComponent,
     NewProductComponent,
-    SearchFilterComponent,
     ProductComponent,
     AddProductComponent,
     IndexComponent,
-    ShowProductComponent
+    ShowProductComponent,
+    NewStaffComponent
   ],
   imports: [
     BrowserModule,

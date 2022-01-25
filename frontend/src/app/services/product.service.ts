@@ -24,8 +24,13 @@ export class ProductService {
     return this.http.get<Product[]>(url);
   }
 
-  getAll() {
-    return this.http.get<Product[]>(environment.baseAPIPath + '/product')
+  getAll(name = "") {
+    if (name !== ""){
+      return this.http.get<Product[]>(environment.baseAPIPath + '/product/?search=' + name)
+    }
+    else{
+      return this.http.get<Product[]>(environment.baseAPIPath + '/product')
+    }
   }
 
   getOne(id: number) {
@@ -41,4 +46,5 @@ export class ProductService {
     console.log(product.category.id )
     this.http.put<Product>(this.baseUrl + "/"+ product.id, { "id": product.id, "name": product.name, "description": product.description, "price": product.price, "isActive": product.isActive, "category": product.category.id }, httpOptions).subscribe(response => console.log(response))
   }
+
 }

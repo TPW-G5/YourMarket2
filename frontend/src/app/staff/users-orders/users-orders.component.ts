@@ -17,7 +17,7 @@ export class UsersOrdersComponent implements OnInit {
   }
 
   getOrders():void {
-    this.orderService.getAll().subscribe(orders => this.orders = this.orders);
+    this.orderService.getAll().subscribe(orders => this.orders = orders);
   }
 
 }

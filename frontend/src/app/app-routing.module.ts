@@ -1,3 +1,4 @@
+import { NewStaffComponent } from './staff/new-staff/new-staff.component';
 import { IndexComponent } from './client/index/index.component';
 import { ShowProductComponent } from './staff/show-product/show-product.component';
 import { NgModule } from '@angular/core';
@@ -46,6 +47,7 @@ const routes: Routes = [
       {path: 'newcategory' , component: NewCategoryComponent},
       {path: 'newproduct' , component: NewProductComponent},
       {path: 'showproduct/:id' , component: ShowProductComponent},
+      {path: 'newstaff' , component: NewStaffComponent},
     ]
   }
 ];
