@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseAPIPath: 'http://pedrodld536.pythonanywhere.com/api/v1'
+  baseAPIPath: 'https://pedrodld536.pythonanywhere.com/api/v1'
 };
 
 /*
