@@ -183,7 +183,7 @@ class StateChangeView(StaffAuthBaseView, views.APIView):
         order = models.Order.objects.get(id=pk)
     except models.Order.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    orderStateUpdate = models.OrderStateUpdate.objects.filter(order=order).order_by('-datetime').first()
+    orderStateUpdate = order.last_state()
     newState = None
     if orderStateUpdate.orderState == models.OrderState.objects.get(name = "Pending"):
       newState = models.OrderState.objects.get(name = "Processing")
@@ -193,5 +193,17 @@ class StateChangeView(StaffAuthBaseView, views.APIView):
       newState = models.OrderState.objects.get(name = "Delivered")
 
     models.OrderStateUpdate.objects.create(orderState = newState, order=order)
+
+    return Response()
+
+  def delete(self, request: HttpRequest, pk, **kwargs):
+    try:
+        order = models.Order.objects.get(id=pk)
+    except models.Order.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    orderStateUpdate = order.last_state()
+    if orderStateUpdate.orderState != models.OrderState.objects.get(name = "Delivered"):
+      models.OrderStateUpdate.objects.create(orderState = models.OrderState.objects.get(name = "Cancelled"), order=order)
 
     return Response()
