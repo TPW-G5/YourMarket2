@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { User } from './../../interfaces/User';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ export class StaffAccountsComponent implements OnInit {
 
   staffs: User[] = [];
 
-  constructor(private UserService:UserService) { }
+  constructor(private UserService:UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.getStaffs()
@@ -22,7 +23,7 @@ export class StaffAccountsComponent implements OnInit {
   }
 
   deleteStaff(staffId: number): void {
-    this.UserService.deleteStaff(staffId)
+    this.UserService.deleteStaff(staffId).subscribe(() => window.location.reload())
   }
 
 }
