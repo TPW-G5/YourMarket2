@@ -1,29 +1,32 @@
-<div class="fit-content">
-  <form>
-    <h4>Create Staff count</h4>
-    <hr />
-    <div>
-      <p>UserName: </p>
-      <div>
-        <input type="text" name="username" [(ngModel)]="staff.username" placeholder="username">
-      </div>
+<div class="p-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        Create Staff
+      </h1>
     </div>
-    <br>
-    <div>
-      <p>Password: </p>
-      <div>
-        <input type="password" name="password" [(ngModel)]="staff.password" placeholder="password">
+  </div>
+
+  <div class="col-md-12 mt-5">
+    <div class="col-4">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter username" [(ngModel)]="staff.username">
       </div>
-    </div>
-    <div>
-      <p>Repeat password: </p>
-      <div>
-        <input type="password" name="repeatpassword" [(ngModel)]="staff.repeatPassword" placeholder="repeat password">
+      <div class="form-group">
+        <label for="password1">Password</label>
+        <input type="password" class="form-control" id="password1" placeholder="Password" [(ngModel)]="staff.password">
       </div>
+      <div class="form-group">
+        <label for="password2">Repeat Password</label>
+        <input type="password" class="form-control" id="password2" placeholder="Repeat Password" [(ngModel)]="staff.repeatPassword">
+      </div>
+
+      <div *ngIf="diferentPassword">
+        <p class="text-danger">Passwords nao sao iguais!</p>
+      </div>
+
+      <button type="submit" class="btn btn-primary" (click)="createStaff()">Submit</button>
     </div>
-    <button type="button" class="btn btn-default" (click)="createStaff()">Create</button>
-  </form>
-  <div *ngIf="diferentPassword">
-    <p>Passwords nao sao iguais!</p>
   </div>
 </div>

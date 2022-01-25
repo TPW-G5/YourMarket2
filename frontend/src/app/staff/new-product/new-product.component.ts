@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CategoryService } from './../../services/category.service';
 import { Category } from './../../interfaces/Category';
 import { ProductService } from './../../services/product.service';
@@ -15,7 +16,7 @@ export class NewProductComponent implements OnInit {
   categories: Category[] = [];
   product!: { category: number, name: string, description: string, price: number};
 
-  constructor(private productService: ProductService, private categoryService: CategoryService) { }
+  constructor(private productService: ProductService, private categoryService: CategoryService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCategories();
@@ -28,7 +29,8 @@ export class NewProductComponent implements OnInit {
 
   createProduct(): void{
     if (this.product.name != "" && this.product.description != "" && this.product.price != 0) {
-        this.productService.createProduct(this.product.category + 1, this.product.name, this.product.description, this.product.price);
-      }
+        this.productService.createProduct(this.product.category, this.product.name, this.product.description, this.product.price);
+        this.router.navigateByUrl('/system/product')
     }
   }
+}

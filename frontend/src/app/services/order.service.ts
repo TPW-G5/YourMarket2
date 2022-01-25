@@ -15,8 +15,11 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    console.log("Vou fazer o pedido agr")
     return this.http.get<Order[]>(environment.baseAPIPath + '/order/')
+  }
+
+  getOrdersByUser(userid: string) { 
+    return this.http.get<Order[]>(environment.baseAPIPath + '/ordersUser/?user=' + userid)
   }
 
   getDetails(id: number) {

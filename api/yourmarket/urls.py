@@ -53,6 +53,8 @@ urlpatterns = [
                 path('<int:pk>', views.CartItemView.as_view()),
             ])),
 
+            path('ordersUser/', views.OrdersViewByUser.as_view()),
+
             # Staff Stuff
             path('users/', include([
                 path('', views.UsersView.as_view()),

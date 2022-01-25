@@ -1,0 +1,51 @@
+<div class="fit-content">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-header" style="text-align: center;">
+                Orders by user:
+            </h1>
+        </div>
+    </div>
+
+    <br>
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="color: black;" scope="col">Id</th>
+                    <th style="color: black;" scope="col">State</th>
+                    <th style="color: black;" scope="col">Date</th>
+                    <th style="color: black;" scope="col"></th>
+                    <th style="color: black;" scope="col"></th>
+                    <th style="color: black;" scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <th style="color: rgb(32, 29, 29);" scope="row">{{ order.id }}</th>
+                    <td style="color: rgb(32, 29, 29);">{{ order.states[order.states.length-1].state.name }}</td>
+                    <td style="color: rgb(32, 29, 29);">{{ order.states[order.states.length-1].datetime | date: 'short' }}</td>
+                    <td><a routerLink="/order/{{ order.id }}">Ver Detalhes</a></td>
+                    <td>
+                        <form action="/" method="post" class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Change State" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/" method="post" class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" name="cancel" value="Cancel" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

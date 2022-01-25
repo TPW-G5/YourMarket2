@@ -88,6 +88,10 @@ class OrdersView(AuthBaseView, generics.ListCreateAPIView):
       
       return Response(serialized.data, status=status.HTTP_201_CREATED)
 
+class OrdersViewByUser(StaffAuthBaseView, generics.ListAPIView):
+  queryset = models.Order.objects.all()
+  filterset_fields = ('user', )
+  serializer_class = serializers.OrderSerializer
 
 class OrderView(AuthBaseView, generics.RetrieveUpdateDestroyAPIView):
   queryset = models.Order.objects.all()
