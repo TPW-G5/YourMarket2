@@ -29,6 +29,7 @@ import { IndexComponent } from './client/index/index.component';
 import { ShowProductComponent } from './staff/show-product/show-product.component';
 import { NewStaffComponent } from './staff/new-staff/new-staff.component';
 import { OrderDetailStaffComponent } from './staff/order-detail-staff/order-detail-staff.component';
+import { OrdersByUsersComponent } from './staff/orders-by-users/orders-by-users.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { OrderDetailStaffComponent } from './staff/order-detail-staff/order-deta
     IndexComponent,
     ShowProductComponent,
     NewStaffComponent,
-    OrderDetailStaffComponent
+    OrderDetailStaffComponent,
+    OrdersByUsersComponent
   ],
   imports: [
     BrowserModule,

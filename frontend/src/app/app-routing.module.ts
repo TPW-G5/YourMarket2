@@ -19,6 +19,7 @@ import { OrderDetailsComponent } from './client/order-details/order-details.comp
 import { NewCategoryComponent } from './staff/new-category/new-category.component';
 import { NewProductComponent } from './staff/new-product/new-product.component';
 import { OrderDetailStaffComponent } from './staff/order-detail-staff/order-detail-staff.component';
+import { OrdersByUsersComponent } from './staff/orders-by-users/orders-by-users.component';
 
 const routes: Routes = [
   {
@@ -46,7 +47,10 @@ const routes: Routes = [
       ]},
       {path: 'categories' , component: CategoriesComponent},
       {path: 'orders' , component: UsersOrdersComponent},
-      {path: 'users' , component: UsersAccountsComponent},
+      {path: 'users' ,children: [
+        {path: '' , component: UsersAccountsComponent},
+        {path: ':id', component: OrdersByUsersComponent}
+      ]},
       {path: 'staff' , component: StaffAccountsComponent},
       {path: 'newcategory' , component: NewCategoryComponent},
       {path: 'newproduct' , component: NewProductComponent},

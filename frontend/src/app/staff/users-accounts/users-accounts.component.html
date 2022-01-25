@@ -16,7 +16,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let user of users">
-                    <td style="color: rgb(32, 29, 29);" ><a href="/">{{ user.username }}</a></td>
+                    <td style="color: rgb(32, 29, 29);" ><a routerLink="/system/users/{{ user.id }}">{{ user.username }}</a></td>
                 </tr>
             </tbody>
         </table>
