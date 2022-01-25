@@ -25,7 +25,7 @@
                     <th style="color: rgb(32, 29, 29);" scope="row">{{ order.id }}</th>
                     <td style="color: rgb(32, 29, 29);">{{ order.states[order.states.length-1].state.name }}</td>
                     <td style="color: rgb(32, 29, 29);">{{ order.states[order.states.length-1].datetime | date: 'short' }}</td>
-                    <td><a href="/">Ver Detalhes</a></td>
+                    <td><a routerLink="/order/{{ order.id }}">Ver Detalhes</a></td>
                     <td>
                         <form action="/" method="post" class="form-horizontal">
                             <div class="form-group">

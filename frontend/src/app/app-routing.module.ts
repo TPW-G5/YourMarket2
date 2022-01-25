@@ -18,6 +18,7 @@ import { OrdersCliComponent } from './client/orders-cli/orders-cli.component';
 import { OrderDetailsComponent } from './client/order-details/order-details.component';
 import { NewCategoryComponent } from './staff/new-category/new-category.component';
 import { NewProductComponent } from './staff/new-product/new-product.component';
+import { OrderDetailStaffComponent } from './staff/order-detail-staff/order-detail-staff.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,10 @@ const routes: Routes = [
     path: 'system', component: AppStaffComponent,
     children: [
       {path: 'dashboard', component: DashboardComponent},
-      {path: 'products' , component: ProductsComponent},
+      {path: 'product', children: [
+        {path: '', component: ProductsComponent},
+        {path: ':id', component: OrderDetailStaffComponent}
+      ]},
       {path: 'categories' , component: CategoriesComponent},
       {path: 'orders' , component: UsersOrdersComponent},
       {path: 'users' , component: UsersAccountsComponent},
