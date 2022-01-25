@@ -19,4 +19,23 @@ export class OrdersByUsersComponent implements OnInit {
     this.orderService.getOrdersByUser(this.userid).subscribe(orders => this.orders = orders);
   }
 
+  changeState(orderId: number):void {
+    this.orders.forEach(order => {
+      if (order.id == orderId) {
+        this.orderService.changeState(order)
+        window.location.reload();
+      }
+    });
+
+  }
+
+  cancelOrder(orderId: number): void {
+    this.orders.forEach(order => {
+      if (order.id == orderId) {
+        //this.orderService.changeState(order)
+        window.location.reload();
+      }
+    });
+  }
+
 }
