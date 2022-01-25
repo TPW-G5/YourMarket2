@@ -1,0 +1,29 @@
+<div class="fit-content">
+  <form>
+    <h4>Create Staff count</h4>
+    <hr />
+    <div>
+      <p>UserName: </p>
+      <div>
+        <input type="text" name="username" [(ngModel)]="staff.username" placeholder="username">
+      </div>
+    </div>
+    <br>
+    <div>
+      <p>Password: </p>
+      <div>
+        <input type="password" name="password" [(ngModel)]="staff.password" placeholder="password">
+      </div>
+    </div>
+    <div>
+      <p>Repeat password: </p>
+      <div>
+        <input type="password" name="repeatpassword" [(ngModel)]="staff.repeatPassword" placeholder="repeat password">
+      </div>
+    </div>
+    <button type="button" class="btn btn-default" (click)="createStaff()">Create</button>
+  </form>
+  <div *ngIf="diferentPassword">
+    <p>Passwords nao sao iguais!</p>
+  </div>
+</div>

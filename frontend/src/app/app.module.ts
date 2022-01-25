@@ -31,6 +31,7 @@ import { ProductComponent } from './components/client/product/product.component'
 import { AddProductComponent } from './components/client/addproduct/addproduct.component';
 import { IndexComponent } from './client/index/index.component';
 import { ShowProductComponent } from './staff/show-product/show-product.component';
+import { NewStaffComponent } from './staff/new-staff/new-staff.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ShowProductComponent } from './staff/show-product/show-product.componen
     ProductComponent,
     AddProductComponent,
     IndexComponent,
-    ShowProductComponent
+    ShowProductComponent,
+    NewStaffComponent
   ],
   imports: [
     BrowserModule,
