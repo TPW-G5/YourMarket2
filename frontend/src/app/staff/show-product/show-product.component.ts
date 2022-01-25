@@ -1,3 +1,5 @@
+import { Product } from './../../interfaces/Product';
+import { ProductService } from './../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./show-product.component.css']
 })
 export class ShowProductComponent implements OnInit {
+  product: Product | null = null
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.productService.getOne(parseInt(location.href.split('/')[location.href.split('/').length-1])).subscribe(product => this.product = product)
   }
 
 }
