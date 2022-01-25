@@ -1,53 +1,27 @@
-# YourMarket
+# Frontend
 
-A aplicação web desenvolvida, serve para facilitar as compras do supermercado YourMarket, sem ser necessário se deslocar para a loja física, ou esperar em filas. O cliente com esta app, pode encomendar todos os produtos do supermercado online, de forma rápida, que irá ser entregue na sua morada.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
 
-## Funcionalidades do utilizador anónimo
+## Development server
 
-* Executar o login/registo;
-* Explorar produtos;
-* Explorar produtos por categorias;
-* Adicionar produtos no carrinho de compras, com determinada quantidade.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Funcionalidades do utilizador autenticado
+## Code scaffolding
 
-* As mesmas que um utilizador anónimo;
-* Observar informações e o estado das suas encomendas;
-* Gerenciar suas informações de pagamento.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Funcionalidades de um membro do Staff
+## Build
 
-* Visualizar painel de acesso com informações estatísticas da loja (número de contas staff, número de contas de clientes, número de encomendas, número de produtos e produtos mais vendidos );
-* Gerenciar produtos (observar, ativar/desativar , adicionar);
-* Observar/adicionar categorias;
-* Gerenciar as encomendas de todos os utilizadores (ver, mudar o estado/cancelar);
-* Observar as contas dos clientes da app;
-* Gerenciar as encomendas de um determinado utilizador(ver, mudar o estado/cancelar).
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Funcionalidades de um administrador
+## Running unit tests
 
-* As mesmas que um membro do Staff
-* Gerenciar as contas dos membros do staff (visualizar, eliminar e adicionar).  
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Execução da aplicação em localhost
+## Running end-to-end tests
 
-Correr o seguinte comando na raiz do projeto:
-```
-./dev_server.sh
-```
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Conta de cliente
+## Further help
 
-* username: cliente
-* password: cliente
-
-## Conta de staff
-
-* username: staff
-* password: staff
-
-## Conta de administrador
-
-* username: admin
-* password: admin
-
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
