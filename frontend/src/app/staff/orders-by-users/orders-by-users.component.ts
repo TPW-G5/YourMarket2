@@ -32,10 +32,11 @@ export class OrdersByUsersComponent implements OnInit {
   cancelOrder(orderId: number): void {
     this.orders.forEach(order => {
       if (order.id == orderId) {
-        //this.orderService.changeState(order)
+        this.orderService.cancelOrder(order)
         window.location.reload();
       }
     });
   }
+
 
 }
