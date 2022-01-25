@@ -45,6 +45,6 @@ export class UserService {
   }
 
   deleteStaff(staffId:number){
-    return this.http.delete<User>(environment.baseAPIPath + "/users/"+ staffId, httpOptions)
+    return this.http.delete<User>(environment.baseAPIPath + "/staff/" + staffId)
   }
 }

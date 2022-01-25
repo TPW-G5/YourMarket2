@@ -58,10 +58,11 @@ urlpatterns = [
             # Staff Stuff
             path('users/', include([
                 path('', views.UsersView.as_view()),
-                path('<int:pk>', views.UserView.as_view())
+                path('<int:pk>/', views.UserView.as_view())
             ])),
             path('staff/', include([
-                path('', views.StaffView.as_view())
+                path('', views.StaffView.as_view()),
+                path('<int:pk>/', views.SingleStaffView.as_view()),
             ])),
         ]))
     ]))

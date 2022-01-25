@@ -169,11 +169,15 @@ class UsersView(StaffAuthBaseView, generics.ListAPIView):
   queryset = models.User.objects.filter(is_staff=False).all()
   serializer_class = serializers.UserSerializer
 
-class UserView(StaffAuthBaseView, generics.RetrieveUpdateDestroyAPIView):
+class UserView(StaffAuthBaseView, generics.RetrieveUpdateAPIView):
   queryset = models.User.objects.filter(is_staff=False).all()
   serializer_class = serializers.UserSerializer
+  
+class SingleStaffView(AdminAuthBaseView, generics.RetrieveUpdateDestroyAPIView):
+  queryset = models.User.objects.filter(is_staff=True).all()
+  serializer_class = serializers.UserSerializer
 
-class StateChangeView(views.APIView):
+class StateChangeView(StaffAuthBaseView, views.APIView):
   def put(self, request: HttpRequest, pk, format=None, **kwargs):
     try:
         order = models.Order.objects.get(id=pk)
