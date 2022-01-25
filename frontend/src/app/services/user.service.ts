@@ -31,8 +31,12 @@ export class UserService {
     if (user?.is_staff) this.router.navigateByUrl('/system/dashboard')
   }
 
-  getAll() {
+  getAllStaff() {
     return this.http.get<User[]>(environment.baseAPIPath + '/staff')
+  }
+
+  getAllUsers() {
+    return this.http.get<User[]>(environment.baseAPIPath + '/users')
   }
 
   createUser(username: string, password:string) {
