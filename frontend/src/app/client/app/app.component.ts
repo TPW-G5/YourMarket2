@@ -22,11 +22,9 @@ export class AppComponent implements OnInit {
     this.authService.signup(this.signup.username, this.signup.password)
   }
 
-  constructor(private authService: AuthService, private cartService: CartService, private userService: UserService, private router: Router) { }
+  constructor(private authService: AuthService, private cartService: CartService) { }
 
   ngOnInit(): void {
-    if (this.userService.user?.is_staff) this.router.navigateByUrl('/system/dashboard')
-
     this.cartService.getAll()
   }
 

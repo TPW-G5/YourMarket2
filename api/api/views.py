@@ -76,7 +76,8 @@ class OrdersView(AuthBaseView, generics.ListCreateAPIView):
     return self.serializer_classes.get(self.request.method)
 
   def list(self, request, *args, **kwargs):
-      serialized = serializers.OrderSerializer(models.Order.objects.filter(user=request.user).all(), many=True)
+      orders = models.Order.objects.all() if request.user.is_staff else models.Order.objects.filter(user=request.user).all()
+      serialized = serializers.OrderSerializer(orders, many=True)
       return Response(serialized.data)
 
   def create(self, request, *args, **kwargs):

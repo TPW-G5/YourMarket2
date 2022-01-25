@@ -28,7 +28,8 @@ export class UserService {
   setUser(user: User | null) {
     this.user = user
 
-    if (user?.is_staff) this.router.navigateByUrl('/system/dashboard')
+    if (user?.is_staff && !location.href.split('/').includes('system')) this.router.navigateByUrl('/system/dashboard')
+    else if ((user === null || !user.is_staff) && location.href.split('/').includes('system')) this.router.navigateByUrl('/')
   }
 
   getAllStaff() {
