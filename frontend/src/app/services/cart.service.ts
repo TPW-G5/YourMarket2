@@ -25,9 +25,7 @@ export class CartService {
   }
 
   add(product: number, amount: number) {
-    let result = this.http.post<CartProduct>(environment.baseAPIPath + '/cart/', { product, amount })
-    result.subscribe(() => this.getAll())
-    return result
+    return this.http.post<CartProduct>(environment.baseAPIPath + '/cart/', { product, amount })
   }
 
   delete(product: number) {
