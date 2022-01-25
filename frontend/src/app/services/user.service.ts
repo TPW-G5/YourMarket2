@@ -41,11 +41,10 @@ export class UserService {
   }
 
   createUser(username: string, password:string) {
-    this.http.post<User>(environment.baseAPIPath + "/staff/", { "username":username, "password": password }, httpOptions).subscribe(response => console.log(response))
+    return this.http.post<User>(environment.baseAPIPath + "/staff/", { "username":username, "password": password }, httpOptions)
   }
 
   deleteStaff(staffId:number){
-    console.log(staffId)
-    this.http.delete<User>(environment.baseAPIPath + "/users/"+ staffId, httpOptions).subscribe(response => console.log(response))
+    return this.http.delete<User>(environment.baseAPIPath + "/users/"+ staffId, httpOptions)
   }
 }

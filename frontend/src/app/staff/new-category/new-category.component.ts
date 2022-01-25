@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CategoryService } from './../../services/category.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class NewCategoryComponent implements OnInit {
   category: {name: string} = {name: ""}
 
-  constructor(private categoryService:CategoryService) { }
+  constructor(private categoryService:CategoryService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -17,6 +18,7 @@ export class NewCategoryComponent implements OnInit {
   createCategory():void{
     if (this.category.name != "") {
       this.categoryService.createCategory(this.category.name);
+      this.router.navigateByUrl('/system/categories')
     }
   }
 
