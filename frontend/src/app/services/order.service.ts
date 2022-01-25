@@ -33,4 +33,8 @@ export class OrderService {
   changeState(order:Order) {
     this.http.put<Order>(environment.baseAPIPath + "/order/changestate/"+ order.id, httpOptions).subscribe(response => console.log(response))
   }
+
+  cancelOrder(order: Order) {
+    this.http.delete<Order>(environment.baseAPIPath + "/order/changestate/"+ order.id, httpOptions).subscribe(response => console.log(response))
+  }
 }
