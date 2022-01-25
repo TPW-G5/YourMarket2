@@ -1,3 +1,4 @@
+import { IndexComponent } from './client/index/index.component';
 import { ShowProductComponent } from './staff/show-product/show-product.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -19,10 +20,11 @@ import { NewProductComponent } from './staff/new-product/new-product.component';
 
 const routes: Routes = [
   {
-    path: '',component: AppComponent,
+    path: '', component: AppComponent,
     children: [
-      {path: '', component: ProdutsClient},
+      {path: '', component: IndexComponent},
       {path: 'product', children: [
+        {path: '', component: ProdutsClient},
         {path: ':id', component: SingleComponent}
       ]},
       {path: 'cart' , component: ViewCartComponent},
@@ -38,9 +40,9 @@ const routes: Routes = [
       {path: 'dashboard', component: DashboardComponent},
       {path: 'products' , component: ProductsComponent},
       {path: 'categories' , component: CategoriesComponent},
-      {path: 'usersorders' , component: UsersOrdersComponent},
-      {path: 'usersaccounts' , component: UsersAccountsComponent},
-      {path: 'staffaccounts' , component: StaffAccountsComponent},
+      {path: 'orders' , component: UsersOrdersComponent},
+      {path: 'users' , component: UsersAccountsComponent},
+      {path: 'staff' , component: StaffAccountsComponent},
       {path: 'newcategory' , component: NewCategoryComponent},
       {path: 'newproduct' , component: NewProductComponent},
       {path: 'showproduct/:id' , component: ShowProductComponent},

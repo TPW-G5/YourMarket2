@@ -1,28 +1,49 @@
-<div class="fit-client">
-	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_veg">
-		<h3 style="margin-left: -60px;" class="w3l_fruit">Hot Offers</h3>
-	</div>
+<div class="container-fluid">
+  <h1 class="my-5 text-center">Our Products</h1>
+  <div class="row">
+    <div class="col-3 pr-5">
 
-	<div style="margin-bottom: 5%;">
-		<a *ngFor="let product of products">
-			<div class="card col-3" style="height:470px; margin-bottom: 5%;">
-				<div class="cover-image">
-					<img src="/assets/static/images/{{ product.id }}.jpg" class="card-img-top" style="margin-left: 10%">
-				</div>
-				<div class="card-body" style="text-align: center;">
-					<h5 class="card-title">{{ product.name }}</h5>
-					<p class="card-text">{{ product.price }}€</p>
-				</div>
-				<div class="snipcart-details">
-					<form>
-						<fieldset>
-							<input type="number" name="amount" value="1" id="amount-{{ product.id }}" />
-							<input style="margin-top: 10px;" type="button" name="submit" value="Add to cart"
-								class="button" (click)="addToCart(product.id)"/>
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</a>
-	</div>
+      <div>
+        <h4>Sorting</h4>
+
+        <select name="" class="form-control form-select">
+          <option value="" selected>Default</option>
+          <option value="">Price: Desc</option>
+          <option value="">Price: Asc</option>
+          <option value="">Name: Desc</option>
+          <option value="">Name: Asc</option>
+        </select>
+      </div>
+
+      <hr class="my-5">
+
+      <div>
+        <h4>Filters</h4>
+
+        <div class="form-group mt-2 mb-4">
+          <p><b>Search</b></p>
+          <input type="text" class="form-control" id="textSearch">
+        </div>
+
+        <div class="form-group mt-2 mb-4">
+          <p><b>Category</b></p>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault"> Default </label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault"> Default </label>
+          </div>
+        </div>
+        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark">Apply</button>
+      </div>
+    </div>
+
+    <div class="col-9 row">
+      <app-product *ngFor="let product of products" [product]="product" class="col-3"></app-product>
+    </div>
+  </div>
 </div>

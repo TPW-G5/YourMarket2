@@ -1,0 +1,12 @@
+<div *ngIf="product" class="product text-center">
+  <a routerLink="/product/{{ product.id }}"><img src="/assets/static/images/{{ product.id }}.jpg" class="w-100 rounded"></a>
+
+  <div class="mt-3">
+    <h5>{{ product.name }}</h5>
+    <p class="text-secondary">{{ product.price }}€</p>
+  </div>
+  
+  <div class="px-2">
+    <app-add-product [productId]="product.id"></app-add-product>
+  </div>
+</div>
