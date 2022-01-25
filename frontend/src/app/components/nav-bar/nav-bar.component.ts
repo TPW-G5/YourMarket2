@@ -1,7 +1,7 @@
-import { CartService } from './../../services/cart.service';
-import { CartProduct } from './../../interfaces/CartProduct';
-import { AuthService } from './../../services/auth.service';
-import { UserService } from './../../services/user.service';
+import { CartService } from '../../services/cart.service';
+import { CartProduct } from '../../interfaces/CartProduct';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
