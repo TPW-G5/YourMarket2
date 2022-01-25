@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Order } from './../../interfaces/Order';
 import { OrderService } from './../../services/order.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class UsersOrdersComponent implements OnInit {
   orders:Order[] = [];
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private router: Router) { }
 
   ngOnInit(): void {
     this.getOrders();
@@ -18,6 +19,17 @@ export class UsersOrdersComponent implements OnInit {
 
   getOrders():void {
     this.orderService.getAll().subscribe(orders => this.orders = orders);
+  }
+
+  changeState(orderId: number):void {
+    console.log("BOtao mudar o estado pressionado")
+    this.orders.forEach(order => {
+      if (order.id == orderId) {
+        this.orderService.changeState(order)
+        window.location.reload();
+      }
+    });
+
   }
 
 }

@@ -61,7 +61,7 @@ class Order(models.Model):
         return OrderItem.objects.filter(order=self)
 
     def __str__(self):
-        return "Order [ user =  " + str(self.user) + "; paymentId = " + self.paymentId + " ]"
+        return "Order [ user =  " + str(self.user) + " ]"
 
 
 class OrderStateUpdate(models.Model):

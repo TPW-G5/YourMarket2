@@ -172,3 +172,22 @@ class UsersView(StaffAuthBaseView, generics.ListAPIView):
 class UserView(StaffAuthBaseView, generics.RetrieveUpdateDestroyAPIView):
   queryset = models.User.objects.filter(is_staff=False).all()
   serializer_class = serializers.UserSerializer
+
+class StateChangeView(views.APIView):
+  def put(self, request: HttpRequest, pk, format=None, **kwargs):
+    try:
+        order = models.Order.objects.get(id=pk)
+    except models.Order.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    orderStateUpdate = models.OrderStateUpdate.objects.filter(order=order).order_by('-datetime').first()
+    newState = None
+    if orderStateUpdate.orderState == models.OrderState.objects.get(name = "Pending"):
+      newState = models.OrderState.objects.get(name = "Processing")
+    elif orderStateUpdate.orderState == models.OrderState.objects.get(name = "Processing"):
+      newState = models.OrderState.objects.get(name = "Delivering")
+    elif orderStateUpdate.orderState == models.OrderState.objects.get(name = "Delivering"):
+      newState = models.OrderState.objects.get(name = "Delivered")
+
+    models.OrderStateUpdate.objects.create(orderState = newState, order=order)
+
+    return Response()
