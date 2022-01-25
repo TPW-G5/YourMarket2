@@ -4,30 +4,30 @@ A aplicação web desenvolvida, serve para facilitar as compras do supermercado 
 
 ## Funcionalidades do utilizador anónimo
 
-Executar o login/registo;
-Explorar produtos;
-Explorar produtos por categorias;
-Adicionar produtos no carrinho de compras, com determinada quantidade;
+* Executar o login/registo;
+* Explorar produtos;
+* Explorar produtos por categorias;
+* Adicionar produtos no carrinho de compras, com determinada quantidade.
 
 ## Funcionalidades do utilizador autenticado
 
-As mesmas que um utilizador anónimo
-Observar informações e o estado das suas encomendas;
-Gerenciar suas informações de pagamento.
+* As mesmas que um utilizador anónimo;
+* Observar informações e o estado das suas encomendas;
+* Gerenciar suas informações de pagamento.
 
 ## Funcionalidades de um membro do Staff
 
-Visualizar painel de acesso com informações estatísticas da loja (número de contas staff, número de contas de clientes, número de encomendas, número de produtos e produtos mais vendidos );
-Gerenciar produtos (observar, ativar/desativar , adicionar);
-Observar/adicionar categorias;
-Gerenciar as encomendas de todos os utilizadores (ver, mudar o estado/cancelar);
-Observar as contas dos clientes da app;
-Gerenciar as encomendas de um determinado utilizador(ver, mudar o estado/cancelar).
+* Visualizar painel de acesso com informações estatísticas da loja (número de contas staff, número de contas de clientes, número de encomendas, número de produtos e produtos mais vendidos );
+* Gerenciar produtos (observar, ativar/desativar , adicionar);
+* Observar/adicionar categorias;
+* Gerenciar as encomendas de todos os utilizadores (ver, mudar o estado/cancelar);
+* Observar as contas dos clientes da app;
+* Gerenciar as encomendas de um determinado utilizador(ver, mudar o estado/cancelar).
 
 ## Funcionalidades de um administrador
 
-As mesmas que um membro do Staff
-Gerenciar as contas dos membros do staff (visualizar, eliminar e adicionar).  
+* As mesmas que um membro do Staff
+* Gerenciar as contas dos membros do staff (visualizar, eliminar e adicionar).  
 
 ## Execução da aplicação em localhost
 
