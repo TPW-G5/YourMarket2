@@ -1,6 +1,6 @@
-<div class="w3l_banner_nav_right">
-	<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_veg">
-		<h3 class="w3l_fruit" style="margin-left: -5%;">Your Cart</h3>
+<div class="container-fluid p-5">
+	<div>
+		<h3 class="mb-4">Your Cart</h3>
 
 		<table class="table">
 			<thead>
@@ -15,24 +15,19 @@
 
 			<tbody>
 					<tr *ngFor="let item of items">
-						<td><a href="/">{{ item.product.name }}</a></td>
-						<td>
-							<form method="post">
-								<input type="number" name="amount" value="{{ item.amount }}" id="amount-{{ item.product.id }}">
-								<input type="submit" value="Update" (click)="updateItem(item.product.id)">
-							</form>
-						</td>
+						<td><a routerLink="/product/{{ item.product.id }}">{{ item.product.name }}</a></td>
+						<td><app-add-product [productId]="item.product.id" class="d-inline-flex"></app-add-product></td>
 						<td>{{ item.product.price }} €</td>
 						<td>{{ item.product.price * item.amount | number : '.2' }}  €</td>
 						<td>
-							<input type="submit" value="Delete" (click)="deleteItem(item.product.id)">
+							<input type="submit" value="Delete" class="btn btn-outline-danger" (click)="deleteItem(item.product.id)">
 						</td>
 					</tr>
 			</tbody>
 		</table>
 
-		<div style="display: block; margin-left: 45%;">
-			<input type="submit" value="Checkout" (click)="createOrder()">
+		<div>
+			<input type="submit" value="Checkout" (click)="createOrder()" class="btn btn-success">
 		</div>
 
 	</div>
