@@ -1,73 +1,80 @@
-<div class="fit-content">
+<div class="p-5">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="page-header" style="text-align: center;">
-                Dashboard <small>Summary of your App</small>
-            </h1>
+            <h1>Dashboard</h1>
+            <h4 class="text-secondary">Summary of your App</h4>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-3 col-sm-12 col-xs-12">
-            <div class="card">
-                <div>
-                    <i class="fa fa-eye fa-5x"></i>
-                </div>
+    <div class="row mt-4">
 
-                <div>
-                    <h3>{{ staff_count }}</h3>
-                    <strong> Staff Count</strong>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-12 col-xs-12">
-            <div class="card">
-                <div>
-                    <i class="fa fa-shopping-cart fa-5x"></i>
-                </div>
-
-                <div>
-                    <h3>{{ user_count }}</h3>
-                    <strong> User Count</strong>
-
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Staff Count</h5>
+                            <span class="h2 font-weight-bold mb-0">{{ staff_count }}</span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-eye fa-4x"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-12 col-xs-12">
-            <div class="card">
-                <div>
-                    <i class="fa fa fa-comments fa-5x"></i>
-
-                </div>
-                <div>
-                    <h3>{{ order_count }}</h3>
-                    <strong> Order Count </strong>
-
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">User Count</h5>
+                            <span class="h2 font-weight-bold mb-0">{{ user_count }}</span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-shopping-cart fa-4x"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-12 col-xs-12">
-            <div class="card">
-                <div>
-                    <i class="fa fa-users fa-5x"></i>
-
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Order Count</h5>
+                            <span class="h2 font-weight-bold mb-0">{{ order_count }}</span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-comments fa-4x"></i>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h3>{{ product_count }}</h3>
-                    <strong>Product Count</strong>
-
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Product Count</h5>
+                            <span class="h2 font-weight-bold mb-0">{{ product_count }}</span>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa fa-comments fa-4x"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <!--/.row-->
-    <div class="col-md-10 col-sm-12 col-xs-12" style="margin-left: 8%;">
+    <div class="col-md-12 mt-5">
 
-        <div class="panel-heading">
-            <strong>Most Sold Products</strong>
-        </div>
+        <h4 class="text-secondary">Most Sold Products</h4>
+
         <div>
             <div>
                 <table class="table table-striped">
@@ -79,13 +86,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- {% for product in most_sold_products %} -->
                         <tr>
                             <td style="color: rgb(32, 29, 29);">product.name</td>
                             <td style="color: rgb(32, 29, 29);">product.category</td>
                             <td style="color: rgb(32, 29, 29);">product.price</td>
                         </tr>
-                        <!-- {% endfor %} -->
                     </tbody>
 
                 </table>
