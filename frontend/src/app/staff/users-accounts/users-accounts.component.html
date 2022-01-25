@@ -15,11 +15,9 @@
                 </tr>
             </thead>
             <tbody>
-                <!--{% for user in users %}-->
-                <tr>
-                    <td style="color: rgb(32, 29, 29);" ><a href="/"> user.username </a></td>
+                <tr *ngFor="let user of users">
+                    <td style="color: rgb(32, 29, 29);" ><a href="/">{{ user.username }}</a></td>
                 </tr>
-                <!--{% endfor %}-->
             </tbody>
         </table>
     </div>
