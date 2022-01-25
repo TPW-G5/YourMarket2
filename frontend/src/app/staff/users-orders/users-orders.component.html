@@ -13,7 +13,6 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th style="color: black;" scope="col">Id</th>
                             <th style="color: black;" scope="col">State</th>
                             <th style="color: black;" scope="col">Date</th>
                             <th style="color: black;" scope="col"></th>
@@ -23,10 +22,9 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let order of orders">
-                            <th style="color: rgb(32, 29, 29);" scope="row">{{ order.id }}</th>
                             <td style="color: rgb(32, 29, 29);">{{ order.states[order.states.length-1].state.name }}</td>
                             <td style="color: rgb(32, 29, 29);">{{ order.states[order.states.length-1].datetime | date: 'short' }}</td>
-                            <td><a href="/">Ver Detalhes</a></td>
+                            <td><a routerLink="/system/orders/{{ order.id }}">Ver Detalhes</a></td>
                             <td>
                                 <form action="/" method="post" class="form-horizontal">
                                     <div class="form-group">

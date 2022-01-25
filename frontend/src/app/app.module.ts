@@ -28,6 +28,7 @@ import { AddProductComponent } from './components/client/addproduct/addproduct.c
 import { IndexComponent } from './client/index/index.component';
 import { ShowProductComponent } from './staff/show-product/show-product.component';
 import { NewStaffComponent } from './staff/new-staff/new-staff.component';
+import { OrderDetailStaffComponent } from './staff/order-detail-staff/order-detail-staff.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { NewStaffComponent } from './staff/new-staff/new-staff.component';
     AddProductComponent,
     IndexComponent,
     ShowProductComponent,
-    NewStaffComponent
+    NewStaffComponent,
+    OrderDetailStaffComponent
   ],
   imports: [
     BrowserModule,
