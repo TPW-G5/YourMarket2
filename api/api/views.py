@@ -76,7 +76,8 @@ class OrdersView(AuthBaseView, generics.ListCreateAPIView):
     return self.serializer_classes.get(self.request.method)
 
   def list(self, request, *args, **kwargs):
-      serialized = serializers.OrderSerializer(models.Order.objects.filter(user=request.user).all(), many=True)
+      orders = models.Order.objects.all() if request.user.is_staff else models.Order.objects.filter(user=request.user).all()
+      serialized = serializers.OrderSerializer(orders, many=True)
       return Response(serialized.data)
 
   def create(self, request, *args, **kwargs):
@@ -123,7 +124,7 @@ class CartView(AuthBaseView, views.APIView):
     user = request.user
     product = models.Product.objects.get(id=request.data['product'])
 
-    if request.data['amount'] <= 0:
+    if int(request.data['amount']) <= 0:
       models.CartItem.objects.filter(user=user, product=product).delete()
       return Response()
     
@@ -136,6 +137,15 @@ class CartView(AuthBaseView, views.APIView):
     
     return Response(serializers.CartItemSerializer(item).data)
 
+class CartItemView(AuthBaseView, views.APIView):
+  def get(self, request, pk, format=None):
+    user = request.user
+
+    try:
+      item = models.CartItem.objects.get(user=user, product_id=pk)
+    except models.CartItem.DoesNotExist:
+      return Response()
+    return Response(serializers.CartItemSerializer(item).data)
 
 class StaffView(AdminAuthBaseView, generics.ListAPIView):
   queryset = models.User.objects.filter(is_staff=True, is_superuser=False).all()

@@ -18,7 +18,11 @@ export class StaffAccountsComponent implements OnInit {
   }
 
   getStaffs():void {
-    this.UserService.getAll().subscribe(staffs => this.staffs = staffs)
+    this.UserService.getAllStaff().subscribe(staffs => this.staffs = staffs)
+  }
+
+  deleteStaff(staffId: number): void {
+    this.UserService.deleteStaff(staffId)
   }
 
 }

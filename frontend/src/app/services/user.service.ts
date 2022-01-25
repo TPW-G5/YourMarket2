@@ -28,14 +28,24 @@ export class UserService {
   setUser(user: User | null) {
     this.user = user
 
-    if (user?.is_staff) this.router.navigateByUrl('/system/dashboard')
+    if (user?.is_staff && !location.href.split('/').includes('system')) this.router.navigateByUrl('/system/dashboard')
+    else if ((user === null || !user.is_staff) && location.href.split('/').includes('system')) this.router.navigateByUrl('/')
   }
 
-  getAll() {
+  getAllStaff() {
     return this.http.get<User[]>(environment.baseAPIPath + '/staff')
+  }
+
+  getAllUsers() {
+    return this.http.get<User[]>(environment.baseAPIPath + '/users')
   }
 
   createUser(username: string, password:string) {
     this.http.post<User>(environment.baseAPIPath + "/staff/", { "username":username, "password": password }, httpOptions).subscribe(response => console.log(response))
+  }
+
+  deleteStaff(staffId:number){
+    console.log(staffId)
+    this.http.delete<User>(environment.baseAPIPath + "/users/"+ staffId, httpOptions).subscribe(response => console.log(response))
   }
 }

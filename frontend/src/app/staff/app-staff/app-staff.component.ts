@@ -9,10 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppStaffComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
-    if (!this.userService.user?.is_staff) this.router.navigateByUrl('/')
   }
 
 }
