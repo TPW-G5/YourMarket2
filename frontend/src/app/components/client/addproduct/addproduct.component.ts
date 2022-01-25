@@ -12,7 +12,7 @@ export class AddProductComponent implements OnInit {
   @Input() productId: number | null = null
   amount: number = 0
 
-  save = () => this.cartService.add(this.productId!, this.amount).subscribe()
+  save = () => this.cartService.add(this.productId!, this.amount).subscribe(() => this.cartService.getAll())
 
   constructor(private cartService: CartService, public userService: UserService) { }
 
