@@ -42,8 +42,6 @@ export class ProductService {
   }
 
   updateProduct(product:Product) {
-    console.log(product)
-    console.log(product.category.id )
     this.http.put<Product>(this.baseUrl + "/"+ product.id, { "id": product.id, "name": product.name, "description": product.description, "price": product.price, "isActive": product.isActive, "category": product.category.id }, httpOptions).subscribe(response => console.log(response))
   }
 
