@@ -28,9 +28,20 @@ class AdminAuthBaseView:
   authentication_classes = (TokenAuthentication,)
   permission_classes = (IsSuperUser,)
 
-class CategoriesView(generics.ListCreateAPIView):
-  queryset = models.Category.objects.all()
+class CategoriesView( generics.ListCreateAPIView):
   serializer_class = serializers.CategorySerializer
+  authentication_classes = (TokenAuthentication,)
+
+  def list(self, request, *args, **kwargs):
+    queryset = self.filter_queryset(models.Category.objects.all() if request.user.is_staff else models.Category.objects.filter(isActive=True).all())
+
+    page = self.paginate_queryset(queryset)
+    if page is not None:
+        serializer = self.get_serializer(page, many=True)
+        return self.get_paginated_response(serializer.data)
+
+    serializer = self.get_serializer(queryset, many=True)
+    return Response(serializer.data)
 
 
 class CategoryView(generics.RetrieveUpdateDestroyAPIView):
@@ -39,13 +50,24 @@ class CategoryView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class ProductsView(generics.ListCreateAPIView):
-  queryset = models.Product.objects.all()
   serializer_classes = {'GET': serializers.ProductSerializer, 'POST': serializers.CreateProductSerializer}
   filterset_fields = ('category', )
   search_fields = ('name', )
+  authentication_classes = (TokenAuthentication,)
 
   def get_serializer_class(self):
     return self.serializer_classes.get(self.request.method)
+
+  def list(self, request, *args, **kwargs):
+    queryset = self.filter_queryset(models.Product.objects.all() if request.user.is_staff else models.Product.objects.filter(isActive=True).all())
+
+    page = self.paginate_queryset(queryset)
+    if page is not None:
+        serializer = self.get_serializer(page, many=True)
+        return self.get_paginated_response(serializer.data)
+
+    serializer = self.get_serializer(queryset, many=True)
+    return Response(serializer.data)
 
 
 class ProductView(generics.RetrieveUpdateDestroyAPIView):
