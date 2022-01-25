@@ -1,11 +1,10 @@
-<div class="w3l_banner_nav_right" *ngIf="order">
-    <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_veg">
-        <h3 class="w3l_fruit" style="margin-right: 10%;">Your Cart</h3>
-        <h4 style="text-align: center; margin-right: 10%;">Request number: {{ order.id }} </h4>
-        <br>
-        <table class="table" style="width: 90%;">
+<div *ngIf="order" class="p-5">
+    <div>
+        <h3>Order <i class="text-secondary">#{{ order.id }}</i> </h3>
+
+        <h5 class="mt-4">Updates</h5>
+        <table class="table">
             <thead>
-                <caption>States</caption>
                 <tr>
                     <th>State</th>
                     <th>Date</th>
@@ -20,12 +19,10 @@
             </tbody>
         </table>
 
-
-        <table class="table" style="width: 90%;">
+        <h5 class="mt-4">Details</h5>
+        <table class="table">
             <thead>
-                <caption style="display: block;">Details</caption>
                 <tr>
-                    <th>Identifier</th>
                     <th>Name</th>
                     <th>Amount</th>
                     <th>Price</th>
@@ -35,14 +32,12 @@
 
             <tbody>
                 <tr *ngFor="let item of order.items">
-                    <td> {{ item.product.id }} </td>
                     <td><a routerLink="/product/{{ item.product.id }}"> {{ item.product.name }} </a></td>
                     <td> {{ item.amount }} </td>
                     <td> {{ item.price }} € </td>
                     <td> {{ item.amount*item.price | number: '.2-2' }} € </td>
                 </tr>
                 <tr>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>

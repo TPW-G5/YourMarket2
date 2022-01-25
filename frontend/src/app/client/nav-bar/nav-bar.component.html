@@ -43,7 +43,7 @@
       </span>
 
       <span *ngIf="userService.user !== null">
-        <div class="btn" *ngIf="userService.user.is_staff !== true"><i class="fa fa-shopping-cart"></i> 0</div>
+        <div class="btn" routerLink="/cart" *ngIf="userService.user.is_staff !== true"><i class="fa fa-shopping-cart"></i> {{ cartService.totalElements }}</div>
         <div class="btn btn-outline-danger" (click)="authService.logout()">Log Out</div>
       </span>
     </div>

@@ -10,13 +10,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AddProductComponent implements OnInit {
 
   @Input() productId: number | null = null
-  amount: number = 1
+  amount: number = 0
 
   save = () => this.cartService.add(this.productId!, this.amount).subscribe()
 
   constructor(private cartService: CartService, public userService: UserService) { }
 
   ngOnInit(): void {
+    this.cartService.getOne(this.productId!).subscribe(item => item ? this.amount = item.amount : null)
   }
 
 }

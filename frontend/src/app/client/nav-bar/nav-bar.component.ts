@@ -1,3 +1,5 @@
+import { CartService } from './../../services/cart.service';
+import { CartProduct } from './../../interfaces/CartProduct';
 import { AuthService } from './../../services/auth.service';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(public userService: UserService, public authService: AuthService) { }
+  constructor(public userService: UserService, public authService: AuthService, public cartService: CartService) { }
 
   ngOnInit(): void {
   }

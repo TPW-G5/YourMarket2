@@ -47,7 +47,10 @@ urlpatterns = [
                 path('', views.AddressesView.as_view()),
                 path('<int:pk>', views.AddressView.as_view())
             ])),
-            path('cart/', views.CartView.as_view()),
+            path('cart/', include([
+                path('', views.CartView.as_view()),
+                path('<int:pk>', views.CartItemView.as_view()),
+            ])),
 
             # Staff Stuff
             path('users/', include([
