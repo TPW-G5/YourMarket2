@@ -24,13 +24,12 @@ export class ProductService {
     return this.http.get<Product[]>(url);
   }
 
-  getAll(name = "") {
-    if (name !== ""){
-      return this.http.get<Product[]>(environment.baseAPIPath + '/product/?search=' + name)
-    }
-    else{
-      return this.http.get<Product[]>(environment.baseAPIPath + '/product')
-    }
+  getAllSorting(sort:string){
+    return this.http.get<Product[]>(environment.baseAPIPath + '/product/?ordering=' + sort)
+  }
+
+  getAll(name = "" , category = "") {
+    return this.http.get<Product[]>(environment.baseAPIPath + '/product', {params: {search: name, category}})
   }
 
   getOne(id: number) {
