@@ -1,8 +1,10 @@
+import { Order } from './../../interfaces/Order';
 import { Product } from './../../interfaces/Product';
 import { UserService } from './../../services/user.service';
 import { User } from './../../interfaces/User';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,12 +14,15 @@ import { ProductService } from 'src/app/services/product.service';
 export class DashboardComponent implements OnInit {
   users: User[] = [];
   products: Product[] = [];
+  orders:Order[] = [];
+  productsMostSolds:Product[] = []
 
   staff_count: number = 0
   user_count: number = 0
   product_count: number = 0
+  order_count: number = 0
 
-  constructor(private UserService:UserService, private productService: ProductService) { }
+  constructor(private UserService:UserService, private productService: ProductService, private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.UserService.getAllStaff().subscribe(users => {
@@ -32,7 +37,15 @@ export class DashboardComponent implements OnInit {
       this.products = products
       this.product_count = this.products.length
     });
-
+    this.orderService.getAll().subscribe(orders => {
+      this.orders = orders
+      this.order_count = this.orders.length
+    });
+    //this.products.sort((product1:Product, product2:Product) => product2.price - product1.price)
+    //console.log(this.products)
   }
 
 }
+
+//most_sold_items = OrderItem.objects.all().values('product').annotate(total=Count('product')).order_by('-total')[:4]
+//'most_sold_products': list(map(lambda item: Product.objects.get(id=item['product']), most_sold_items))
