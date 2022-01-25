@@ -20,7 +20,6 @@
             </tr>
         </thead>
         <tbody>
-            <!-- {% for product in products %} -->
             <tr *ngFor="let product of products">
                 <th style="color: rgb(32, 29, 29);" scope="row">{{ product.id }}</th>
                 <td style="color: rgb(32, 29, 29);">{{ product.category.name }}</td>
@@ -30,9 +29,7 @@
                 <td *ngIf="!product.isActive" style="color: rgb(32, 29, 29);">No</td>
                 <td style="color: rgb(32, 29, 29);">
                     <a routerLink="/system/showproduct/{{ product.id }}"><button class="btn btn-info btn-sm">Ver</button></a>
-                    <!-- {% if product.active == "Yes" %}-->
                     <form class="form-horizontal" style="margin-left: -5rem;">
-                        <!--{% csrf_token %}-->
                         <div class="form-group">
                             <div *ngIf="product.isActive" class="col-md-offset-2 col-md-10">
                                 <button type="button" class="btn btn-default" (click)="desactiveProduct(product.id)">Desativar</button>
@@ -44,7 +41,6 @@
                     </form>
                 </td>
             </tr>
-            <!--{% endfor %}-->
         </tbody>
     </table>
 </div>
