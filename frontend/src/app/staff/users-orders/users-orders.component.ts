@@ -22,7 +22,6 @@ export class UsersOrdersComponent implements OnInit {
   }
 
   changeState(orderId: number):void {
-    console.log("BOtao mudar o estado pressionado")
     this.orders.forEach(order => {
       if (order.id == orderId) {
         this.orderService.changeState(order)
@@ -30,6 +29,15 @@ export class UsersOrdersComponent implements OnInit {
       }
     });
 
+  }
+
+  cancelOrder(orderId: number): void {
+    this.orders.forEach(order => {
+      if (order.id == orderId) {
+        //this.orderService.changeState(order)
+        window.location.reload();
+      }
+    });
   }
 
 }

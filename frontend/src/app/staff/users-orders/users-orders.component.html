@@ -38,10 +38,10 @@
                             </td>
                             <td>
                               <div *ngIf="order.states[order.states.length-1].state.name != 'Cancelled' && order.states[order.states.length-1].state.name != 'Delivered'">
-                                <form action="/" method="post" class="form-horizontal">
+                                <form class="form-horizontal">
                                     <div class="form-group">
                                         <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" name="cancel" value="Cancel" class="btn btn-default" />
+                                            <button type="button" name="cancel" class="btn btn-default" (click)="cancelOrder(order.id)">Cancel</button>
                                         </div>
                                     </div>
                                 </form>
